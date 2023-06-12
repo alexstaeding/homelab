@@ -9,15 +9,6 @@
           - ca-certificates
           - curl
         state: present
-    #    - name: Add GPG key for Kubernetes
-    #      apt_key:
-    #        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    #        state: present
-    #    - name: Add Kubernetes repository
-    #      apt_repository:
-    #        repo: deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
-    #        filename: kubernetes.list
-    #        state: present
     - name: Add Kubernetes repository
       deb822_repository:
         name: kubernetes
@@ -44,3 +35,11 @@
         - kubelet
         - kubeadm
         - kubectl
+    - name: Create kube user
+      user:
+        name: kube
+        state: present
+        shell: /bin/bash
+        createhome: yes
+        group: kube
+        groups: ""
