@@ -17,6 +17,14 @@
         suites: kubernetes-xenial
         components: main
         signed_by: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    - name: Add Helm repository
+      deb822_repository:
+        name: helm
+        types: deb
+        uris: https://baltocdn.com/helm/stable/debian/
+        suites: all
+        components: main
+        signed_by: https://baltocdn.com/helm/signing.asc
     - name: Update apt cache
       apt:
         update_cache: yes
@@ -35,6 +43,10 @@
         - kubelet
         - kubeadm
         - kubectl
+    - name: Install Helm
+      apt:
+        name: helm
+        state: present
     - name: Create kube user
       user:
         name: kube
