@@ -4,3 +4,7 @@
 
 [controllers]
 10.0.4.1
+
+[k8s_cluster:children]
+workers
+controllers
