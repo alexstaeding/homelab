@@ -1,0 +1,30 @@
+- name: Install CRI-O
+  hosts: workers
+  become: yes
+  vars:
+    os: "Debian_11" # Environment variable used for https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/
+    cri_o_version: "1.27"
+  tasks:
+    - name: Add devel:/kubic:/libcontainers:/stable/{{ os }} repository
+      deb822_repository:
+        name: devel:kubic:libcontainers:stable
+        types: deb
+        uris: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ os }}/
+        suites: /
+        signed_by: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/{{ os }}/Release.key
+    - name: Add devel:/kubic:/libcontainers:/stable:/cri-o:/{{ cri_o_version }}/{{ os }} repository
+      deb822_repository:
+        name: devel:kubic:libcontainers:stable:cri-o:{{ cri_o_version }}
+        types: deb
+        uris: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ cri_o_version }}/{{ os }}/
+        suites: /
+        signed_by: https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/{{ cri_o_version }}/{{ os }}/Release.key
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+    - name: Install cri-o
+      apt:
+        name:
+          - cri-o
+          - cri-o-runc
+        state: present

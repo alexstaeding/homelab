@@ -1,0 +1,14 @@
+- name: Configure NTP
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure systemd-timesyncd is installed
+      apt: name=systemd-timesyncd state=present
+    - name: Check if NTP is enabled via timedatectl
+      shell: timedatectl show | grep ^NTP=
+      register: timedatectl_show
+      changed_when: false
+    - name: Enable NTP synchronization via timedatectl
+      command: timedatectl set-ntp yes
+      when: timedatectl_show.stdout.find("NTP=yes") == -1
+      changed_when: timedatectl_show.stdout.find("NTP=yes") == -1
