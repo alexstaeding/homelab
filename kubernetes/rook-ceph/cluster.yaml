@@ -69,7 +69,7 @@ spec:
     # serve the dashboard under a subpath (useful when you are accessing the dashboard via a reverse proxy)
     # urlPrefix: /ceph-dashboard
     # serve the dashboard at the given port.
-    # port: 8443
+    port: 443
     # serve the dashboard using SSL
     ssl: true
   # enable prometheus alerting for cluster
