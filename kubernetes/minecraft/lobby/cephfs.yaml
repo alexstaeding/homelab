@@ -1,0 +1,19 @@
+apiVersion: ceph.rook.io/v1
+kind: CephFilesystem
+metadata:
+  name: minecraft-lobby-fs
+  namespace: minecraft
+spec:
+  metadataPool:
+    failureDomain: host
+    replicated:
+      size: 1
+  dataPools:
+    - name: minecraft-lobby-fs-data
+      failureDomain: host
+      replicated:
+        size: 1
+  preserveFilesystemOnDelete: true
+  metadataServer:
+    activeCount: 1
+    activeStandby: true
