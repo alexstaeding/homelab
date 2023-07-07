@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-proxy
+  namespace: minecraft
+  labels:
+    app: minecraft-proxy
+spec:
+  selector:
+    matchLabels:
+      app: minecraft-proxy
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minecraft-proxy
+    spec:
+      containers:
+        - name: minecraft-proxy
+          image: dockcenter/velocity:3.2.0-SNAPSHOT-260
+          ports:
+            - containerPort: 25577
