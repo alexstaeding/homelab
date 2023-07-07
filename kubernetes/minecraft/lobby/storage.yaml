@@ -38,7 +38,7 @@ reclaimPolicy: Delete
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mindcraft-lobby-pvc
+  name: minecraft-lobby-pvc
   namespace: minecraft
 spec:
   accessModes:
