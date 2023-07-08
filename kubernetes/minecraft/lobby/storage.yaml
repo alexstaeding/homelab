@@ -12,7 +12,7 @@ spec:
     - name: data
       failureDomain: host
       replicated:
-        size: 3
+        size: 2
   preserveFilesystemOnDelete: true
   metadataServer:
     activeCount: 1
