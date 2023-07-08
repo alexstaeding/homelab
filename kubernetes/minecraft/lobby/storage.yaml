@@ -2,7 +2,7 @@ apiVersion: ceph.rook.io/v1
 kind: CephFilesystem
 metadata:
   name: minecraft-lobby-fs
-  namespace: minecraft
+  namespace: rook-ceph
 spec:
   metadataPool:
     failureDomain: host
@@ -22,7 +22,6 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: minecraft-lobby-storage
-  namespace: minecraft
 provisioner: rook-ceph.cephfs.csi.ceph.com
 parameters:
   clusterID: rook-ceph
