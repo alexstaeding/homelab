@@ -7,9 +7,9 @@ spec:
   metadataPool:
     failureDomain: host
     replicated:
-      size: 3
+      size: 2
   dataPools:
-    - name: minecraft-lobby-fs-data
+    - name: data
       failureDomain: host
       replicated:
         size: 3
