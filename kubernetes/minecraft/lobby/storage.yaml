@@ -7,12 +7,12 @@ spec:
   metadataPool:
     failureDomain: host
     replicated:
-      size: 1
+      size: 3
   dataPools:
     - name: minecraft-lobby-fs-data
       failureDomain: host
       replicated:
-        size: 1
+        size: 3
   preserveFilesystemOnDelete: true
   metadataServer:
     activeCount: 1
