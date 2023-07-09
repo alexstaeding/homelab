@@ -22,6 +22,9 @@ spec:
           image: itzg/minecraft-server:java17
           ports:
             - containerPort: 25565
+          volumeMounts:
+            - name: minecraft-lobby-pvc
+              mountPath: /data
           env:
             - name: EULA
               value: "TRUE"
