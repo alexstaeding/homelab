@@ -24,8 +24,8 @@ spec:
             - /bin/sh
             - -c
             - |
-              if [ ! -f /data/server/velocity.toml ]; then
-                wget -O /data/server/velocity.toml https://raw.githubusercontent.com/PaperMC/Velocity/dev/3.0.0/proxy/src/main/resources/default-velocity.toml
+              if [ ! -f /data/velocity.toml ]; then
+                wget -O /data/velocity.toml https://raw.githubusercontent.com/PaperMC/Velocity/dev/3.0.0/proxy/src/main/resources/default-velocity.toml
               fi
           volumeMounts:
             - name: minecraft-proxy-volume
@@ -38,16 +38,16 @@ spec:
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /server/logs
-              subPath: server/logs
+              subPath: logs
             - name: minecraft-proxy-volume
               mountPath: /server/plugins
-              subPath: server/plugins
+              subPath: plugins
             - name: minecraft-proxy-volume
               mountPath: /server/velocity.toml
-              subPath: server/velocity.toml
-            - name: secret-volume
-              mountPath: /server/forwarding.secret
-              subPath: secret-value
+              subPath: velocity.toml
+            - name: minecraft-proxy-volume
+              mountPath: forwarding.secret
+              subPath: forwarding.secret
           env:
             - name: TYPE
               value: "VELOCITY"
