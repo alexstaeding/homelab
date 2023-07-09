@@ -25,7 +25,14 @@ spec:
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /data
+            - name: secret-volume
+              mountPath: /data/forwarding.secret
+              subPath: secret-value
+              readOnly: true
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
             claimName: minecraft-proxy-pvc
+        - name: secret-volume
+          secret:
+            secretName: minecraft-proxy-secret
