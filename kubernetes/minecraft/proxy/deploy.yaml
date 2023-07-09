@@ -25,13 +25,13 @@ spec:
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /server/logs
-              subPath: server/logs
+              subPath: server/
             - name: minecraft-proxy-volume
               mountPath: /server/plugins
-              subPath: server/plugins
+              subPath: server/
             - name: minecraft-proxy-volume
               mountPath: /server/velocity.toml
-              subPath: server/velocity.toml
+              subPath: server/
           env:
             - name: TYPE
               value: "VELOCITY"
