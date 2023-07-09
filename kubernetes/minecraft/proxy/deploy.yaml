@@ -23,8 +23,6 @@ spec:
           ports:
             - containerPort: 25577
           volumeMounts:
-            - name: minecraft-proxy-volume
-              mountPath: /data
             - name: secret-volume
               mountPath: /data/forwarding.secret
               subPath: secret-value
