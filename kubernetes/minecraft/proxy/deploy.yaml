@@ -32,9 +32,6 @@ spec:
             - name: minecraft-proxy-volume
               mountPath: /server/velocity.toml
               subPath: server/velocity.toml
-            - name: secret-volume
-              mountPath: /server/forwarding.secret
-              subPath: secret-value
           env:
             - name: TYPE
               value: "VELOCITY"
