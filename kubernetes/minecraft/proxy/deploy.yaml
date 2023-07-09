@@ -35,7 +35,6 @@ spec:
             - name: secret-volume
               mountPath: /server/forwarding.secret
               subPath: secret-value
-              readOnly: true
           env:
             - name: TYPE
               value: "VELOCITY"
