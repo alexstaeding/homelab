@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: 32Gi
-  storageClassName: minecraft-proxy-storage
+  storageClassName: minecraft-storage
