@@ -23,8 +23,12 @@ spec:
           ports:
             - containerPort: 25565
           volumeMounts:
-            - name: minecraft-lobby-pvc
+            - name: minecraft-lobby-volume
               mountPath: /data
           env:
             - name: EULA
               value: "TRUE"
+      volumes:
+        - name: minecraft-lobby-volume
+          persistentVolumeClaim:
+            claimName: minecraft-lobby-pvc
