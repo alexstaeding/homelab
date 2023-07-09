@@ -24,12 +24,15 @@ spec:
             - /bin/sh
             - -c
             - |
-              if [ ! -f /data/velocity.toml ]; then
-                wget -O /data/velocity.toml https://raw.githubusercontent.com/PaperMC/Velocity/dev/3.0.0/proxy/src/main/resources/default-velocity.toml
+              if [ ! -f /server/velocity.toml ]; then
+                wget -O /server/velocity.toml https://raw.githubusercontent.com/PaperMC/Velocity/dev/3.0.0/proxy/src/main/resources/default-velocity.toml
+              fi
+              if [ ! -f /server/forwarding.secret ]; then
+                dd if=/dev/urandom bs=1 count=64 2>/dev/null | base64 > /server/forwarding.secret
               fi
           volumeMounts:
             - name: minecraft-proxy-volume
-              mountPath: /data
+              mountPath: /server
       containers:
         - name: minecraft-proxy
           image: itzg/bungeecord:java17
