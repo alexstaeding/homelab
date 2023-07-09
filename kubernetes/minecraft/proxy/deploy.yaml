@@ -22,15 +22,3 @@ spec:
           image: dockcenter/velocity:3.2.0-SNAPSHOT-260
           ports:
             - containerPort: 25577
-          volumeMounts:
-            - name: secret-volume
-              mountPath: /data/forwarding.secret
-              subPath: secret-value
-              readOnly: true
-      volumes:
-        - name: minecraft-proxy-volume
-          persistentVolumeClaim:
-            claimName: minecraft-proxy-pvc
-        - name: secret-volume
-          secret:
-            secretName: minecraft-proxy-secret
