@@ -22,3 +22,10 @@ spec:
           image: dockcenter/velocity:3.2.0-SNAPSHOT-260
           ports:
             - containerPort: 25577
+          volumeMounts:
+            - name: minecraft-proxy-volume
+              mountPath: /data
+      volumes:
+        - name: minecraft-proxy-volume
+          persistentVolumeClaim:
+            claimName: minecraft-proxy-pvc
