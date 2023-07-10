@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minecraft-proxy-service
+  namespace: minecraft
+  annotations:
+    metallb.universe.tf/address-pool: address-pool
+spec:
+  selector:
+    app: minecraft-proxy
+  ports:
+    - protocol: TCP
+      port: 25577
+      targetPort: 25577
+  type: LoadBalancer
