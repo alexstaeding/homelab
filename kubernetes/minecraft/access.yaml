@@ -13,7 +13,7 @@ spec:
         app: minecraft-access
     spec:
       containers:
-        - name: dummy-container
+        - name: minecraft-access
           image: debian:bookworm
           volumeMounts:
             - name: minecraft-proxy-volume
