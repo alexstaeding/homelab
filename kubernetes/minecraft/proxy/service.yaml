@@ -5,6 +5,7 @@ metadata:
   namespace: minecraft
   annotations:
     metallb.universe.tf/address-pool: address-pool
+    metallb.universe.tf/loadBalancerIPs: 10.0.10.1
 spec:
   selector:
     app: minecraft-proxy
