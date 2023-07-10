@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-access
+  namespace: minecraft
+spec:
+  selector:
+    matchLabels:
+      app: minecraft-access
+  template:
+    spec:
+      containers:
+        - name: dummy-container
+          image: debian:bookworm
+          volumeMounts:
+            - name: minecraft-proxy-volume
+              mountPath: /servers/proxy
+            - name: minecraft-lobby-volume
+              mountPath: /servers/lobby
+      volumes:
+        - name: minecraft-proxy-volume
+          persistentVolumeClaim:
+            claimName: minecraft-proxy-pvc
+        - name: minecraft-lobby-volume
+          persistentVolumeClaim:
+            claimName: minecraft-lobby-pvc
