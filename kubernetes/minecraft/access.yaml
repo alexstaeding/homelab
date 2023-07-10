@@ -8,6 +8,9 @@ spec:
     matchLabels:
       app: minecraft-access
   template:
+    metadata:
+      labels:
+        app: dummy-app
     spec:
       containers:
         - name: dummy-container
