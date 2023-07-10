@@ -26,6 +26,8 @@ spec:
             - name: minecraft-lobby-volume
               mountPath: /data
           env:
+            - name: TYPE
+              value: "PAPER"
             - name: EULA
               value: "TRUE"
       volumes:
