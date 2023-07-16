@@ -15,6 +15,6 @@ spec:
       labels:
         app: uptime-kuma
     spec:
-      initContainers:
+      containers:
         - name: uptime-kuma
           image: louislam/uptime-kuma:1
