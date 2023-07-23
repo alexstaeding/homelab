@@ -5,6 +5,8 @@ metadata:
   namespace: rook-ceph # namespace:cluster
   labels:
     app: rook-ceph-tools
+  annotations:
+    argocd.argoproj.io/sync-wave: "2" # create after cluster
 spec:
   replicas: 1
   selector:

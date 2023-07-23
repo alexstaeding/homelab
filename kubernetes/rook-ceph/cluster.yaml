@@ -15,6 +15,8 @@ kind: CephCluster
 metadata:
   name: rook-ceph
   namespace: rook-ceph # namespace:cluster
+  annotations:
+    argocd.argoproj.io/sync-wave: "1" # create after common, crd and operator
 spec:
   cephVersion:
     # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
