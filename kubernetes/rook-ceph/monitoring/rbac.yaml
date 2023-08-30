@@ -1,4 +1,3 @@
----
 # OLM: BEGIN ROLE
 # Aspects for creation of monitoring resources
 kind: Role
@@ -72,7 +71,7 @@ subjects:
   - kind: ServiceAccount
     # change to the serviceaccount and namespace to use for monitoring
     name: prometheus-k8s
-    namespace: rook-ceph
+    namespace: monitoring
 # OLM: END ROLE BINDING
 ---
 # OLM: BEGIN ROLE
@@ -110,4 +109,3 @@ subjects:
     name: rook-ceph-mgr
     namespace: rook-ceph
 # OLM: END ROLE BINDING
----
