@@ -30,4 +30,4 @@ spec:
                   name: rcon-web-secret
                   key: RWA_PASSWORD
             - name: RWA_WEBSOCKET_URL_SSL
-              value: "https://rcon-socket.sourcegrade.org"
+              value: "wss://rcon-socket.sourcegrade.org"
