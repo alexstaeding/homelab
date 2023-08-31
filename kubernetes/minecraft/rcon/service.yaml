@@ -10,4 +10,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 4326
+    - protocol: TCP
+      port: 4327
+      targetPort: 4327
   type: ClusterIP
