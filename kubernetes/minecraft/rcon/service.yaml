@@ -7,10 +7,12 @@ spec:
   selector:
     app: minecraft-rcon
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 4326
-    - protocol: TCP
+    - name: websocket
+      protocol: TCP
       port: 4327
       targetPort: 4327
   type: ClusterIP
