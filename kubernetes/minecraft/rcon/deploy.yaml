@@ -29,3 +29,5 @@ spec:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RWA_PASSWORD
+            - name: RWA_WEBSOCKET_URL_SSL
+              value: "rcon-socket.sourcegrade.org"
