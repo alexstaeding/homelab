@@ -8,6 +8,6 @@ spec:
     app: minecraft-rcon
   ports:
     - protocol: TCP
-      port: 4326
+      port: 80
       targetPort: 4326
   type: ClusterIP
