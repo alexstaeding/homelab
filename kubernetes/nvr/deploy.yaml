@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nvr-viseron
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nvr-viseron
+  template:
+    metadata:
+      labels:
+        app: nvr-viseron
+    spec:
+      containers:
+        - name: viseron
+          image: roflcoopter/viseron:2.2.0
+          ports:
+            - containerPort: 8888
+          volumeMounts:
+            - name: localtime
+              mountPath: /etc/localtime
+              readOnly: true
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /etc/localtime
