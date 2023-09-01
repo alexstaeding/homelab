@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: minecraft-rcon-service-internal
   namespace: minecraft
+  annotations:
+    metallb.universe.tf/address-pool: address-pool
+    metallb.universe.tf/loadBalancerIPs: 10.0.10.80
 spec:
   selector:
     app: minecraft-rcon
@@ -15,4 +18,4 @@ spec:
       protocol: TCP
       port: 4327
       targetPort: 4327
-  type: ClusterIP
+  type: LoadBalancer
