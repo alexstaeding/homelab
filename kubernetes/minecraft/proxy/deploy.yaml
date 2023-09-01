@@ -54,6 +54,11 @@ spec:
           env:
             - name: TYPE
               value: "VELOCITY"
+            - name: RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rcon-web-secret
+                  key: RCON_PASSWORD
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:

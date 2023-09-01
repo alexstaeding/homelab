@@ -30,6 +30,11 @@ spec:
               value: "PAPER"
             - name: EULA
               value: "TRUE"
+            - name: RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rcon-web-secret
+                  key: RCON_PASSWORD
       volumes:
         - name: minecraft-lobby-volume
           persistentVolumeClaim:
