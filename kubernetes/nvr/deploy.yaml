@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nvr-rigate
+      app: nvr-frigate
   template:
     metadata:
       labels:
