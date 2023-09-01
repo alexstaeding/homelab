@@ -30,6 +30,12 @@ spec:
               value: "PAPER"
             - name: EULA
               value: "TRUE"
+            - name: USE_AIKAR_FLAGS
+              value: "TRUE"
+            - name: "INIT_MEMORY"
+              value: "2G"
+            - name: "MAX_MEMORY"
+              value: "8G"
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
