@@ -8,9 +8,9 @@ metadata:
     metallb.universe.tf/loadBalancerIPs: 10.0.10.5
 spec:
   selector:
-    app: nvr-viseron
+    app: nvr-frigate
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8888
+      targetPort: 5000
   type: LoadBalancer

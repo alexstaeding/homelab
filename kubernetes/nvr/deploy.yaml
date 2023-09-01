@@ -1,27 +1,55 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nvr-viseron
+  name: nvr-frigate
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nvr-viseron
+      app: nvr-rigate
   template:
     metadata:
       labels:
-        app: nvr-viseron
+        app: nvr-frigate
     spec:
       containers:
-        - name: viseron
-          image: roflcoopter/viseron:2.2.0
+        - name: frigate
+          image: ghcr.io/blakeblackshear/frigate:stable
           ports:
-            - containerPort: 8888
+            - containerPort: 5000
+            - containerPort: 8554
+            - containerPort: 8555
+              protocol: TCP
+            - containerPort: 8555
+              protocol: UDP
           volumeMounts:
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
+#            - name: config-volume
+#              mountPath: /config/config.yml
+#              subPath: config.yml
+#            - name: storage-volume
+#              mountPath: /media/frigate
+            - name: tmp-cache
+              mountPath: /tmp/cache
+          env:
+            - name: FRIGATE_RTSP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: frigate-rtsp-secret
+                  key: FRIGATE_RTSP_PASSWORD
       volumes:
         - name: localtime
           hostPath:
             path: /etc/localtime
+#        - name: config-volume
+#          hostPath:
+#            path: /path/to/your/config.yml
+#        - name: storage-volume
+#          hostPath:
+#            path: /path/to/your/storage
+        - name: tmp-cache
+          emptyDir:
+            medium: Memory
+            sizeLimit: "8Gi"
