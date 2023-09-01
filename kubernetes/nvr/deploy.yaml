@@ -12,6 +12,20 @@ spec:
       labels:
         app: nvr-frigate
     spec:
+      initContainers:
+        - name: init-config
+          image: busybox:1.28
+          command:
+            - sh
+            - -c
+            - >
+              cat <<EOL > /config/config.yml
+              database:
+                path: /db/frigate.db
+              EOL
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
       containers:
         - name: frigate
           image: ghcr.io/blakeblackshear/frigate:stable
@@ -26,11 +40,9 @@ spec:
             - name: localtime
               mountPath: /etc/localtime
               readOnly: true
-#            - name: config-volume
-#              mountPath: /config/config.yml
-#              subPath: config.yml
-#            - name: storage-volume
-#              mountPath: /media/frigate
+            - name: config-volume
+              mountPath: /config/config.yml
+              subPath: config.yml
             - name: tmp-cache
               mountPath: /tmp/cache
           env:
@@ -43,12 +55,8 @@ spec:
         - name: localtime
           hostPath:
             path: /etc/localtime
-#        - name: config-volume
-#          hostPath:
-#            path: /path/to/your/config.yml
-#        - name: storage-volume
-#          hostPath:
-#            path: /path/to/your/storage
+        - name: config-volume
+          emptyDir: {}
         - name: tmp-cache
           emptyDir:
             medium: Memory
