@@ -16,10 +16,14 @@ spec:
         - name: init-config
           image: busybox:1.28
           command:
-            - 'echo "
-database:
-  path: /db/frigate.db
-" > /config/config.yml'
+            - sh
+            - -c
+            - |
+              mkdir -p /config &&
+              echo "
+              database:
+                path: /db/frigate.db
+              " > /config/config.yml
           volumeMounts:
             - name: config-volume
               mountPath: /config
