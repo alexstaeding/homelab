@@ -16,13 +16,10 @@ spec:
         - name: init-config
           image: busybox:1.28
           command:
-            - sh
-            - -c
-            - >
-              cat <<EOL > /config/config.yml
-              database:
-                path: /db/frigate.db
-              EOL
+            - 'echo "
+database:
+  path: /db/frigate.db
+" > /config/config.yml'
           volumeMounts:
             - name: config-volume
               mountPath: /config
@@ -56,7 +53,7 @@ spec:
           hostPath:
             path: /etc/localtime
         - name: config-volume
-          emptyDir: {}
+          emptyDir: { }
         - name: tmp-cache
           emptyDir:
             medium: Memory
