@@ -95,7 +95,7 @@ spec:
                     width: 1280
                     height: 960
 
-                chickens-outside-ptz
+                chickens-outside-ptz:
                   ffmpeg:
                     inputs:
                       - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.148.231:554/h264Preview_01_main
