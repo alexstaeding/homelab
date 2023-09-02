@@ -20,11 +20,11 @@ spec:
       protocol: TCP
       port: 8554
       targetPort: 8554
-    - name: WebRTC TCP
+    - name: webrtc-tcp
       protocol: TCP
       port: 8555
       targetPort: 8555
-    - name: WebRTC UDP
+    - name: webrtc-udp
       protocol: UDP
       port: 8555
       targetPort: 8555
