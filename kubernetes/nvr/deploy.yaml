@@ -24,16 +24,16 @@ spec:
               mqtt:
                 enabled: False
               cameras:
-                ducks_ptz:
+                roosters-outside-small-cam:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.181.242:554/h264Preview_01_main
+                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.121.105:554/h265Preview_01_main
                         roles:
                           - detect
                   detect:
                     enabled: False
-                    width: 1280
-                    height: 720
+                    width: 3840
+                    height: 2160
               " > /config/config.yml
           env:
             - name: FRIGATE_RTSP_PASSWORD
