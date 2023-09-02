@@ -9,7 +9,7 @@ spec:
     - Ingress
   ingress:
     - from:
-        - namespaceSelector: {}
-          podSelector:
-            matchLabels:
-              app: nvr-service
+      - namespaceSelector: {}
+        podSelector:
+          matchLabels:
+            app: nvr-service
