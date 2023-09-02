@@ -20,10 +20,7 @@ spec:
             - -c
             - |
               mkdir /config
-              mkdir /db
               echo "
-              database:
-                path: /db/frigate.db
               mqtt:
                 enabled: False
               cameras:
