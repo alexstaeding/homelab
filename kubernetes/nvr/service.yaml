@@ -12,7 +12,20 @@ spec:
   selector:
     app: nvr-frigate
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 5000
+    - name: rtsp
+      protocol: TCP
+      port: 8554
+      targetPort: 8554
+    - name: WebRTC TCP
+      protocol: TCP
+      port: 8555
+      targetPort: 8555
+    - name: WebRTC UDP
+      protocol: UDP
+      port: 8555
+      targetPort: 8555
   type: LoadBalancer
