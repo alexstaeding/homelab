@@ -24,6 +24,7 @@ spec:
               mqtt:
                 enabled: False
               cameras:
+
                 roosters-outside-small-cam:
                   ffmpeg:
                     inputs:
@@ -34,6 +35,51 @@ spec:
                     enabled: False
                     width: 3840
                     height: 2160
+
+                chickens-inside-1:
+                  ffmpeg:
+                    inputs:
+                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.153.210:554/h264Preview_01_main
+                        roles:
+                          - detect
+                  detect:
+                    enabled: False
+                    width: 2560
+                    height: 1920
+
+                chickens-inside-2:
+                  ffmpeg:
+                    inputs:
+                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.119.150:554/h264Preview_01_main
+                        roles:
+                          - detect
+                  detect:
+                    enabled: False
+                    width: 2560
+                    height: 1920
+
+                coop-low:
+                  ffmpeg:
+                    inputs:
+                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.162.231:554/h264Preview_01_main
+                        roles:
+                          - detect
+                  detect:
+                    enabled: False
+                    width: 2560
+                    height: 1920
+
+                 coop-high:
+                  ffmpeg:
+                    inputs:
+                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.124.41:554/h264Preview_01_main
+                        roles:
+                          - detect
+                  detect:
+                    enabled: False
+                    width: 2560
+                    height: 1920
+
               " > /config/config.yml
           env:
             - name: FRIGATE_RTSP_PASSWORD
