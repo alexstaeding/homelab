@@ -22,7 +22,7 @@ spec:
               mkdir /config
               echo "
               mqtt:
-                enabled: False
+                enabled: false
               cameras:
 
                 roosters-outside-small-cam:
@@ -32,9 +32,8 @@ spec:
                         roles:
                           - detect
                   detect:
-                    enabled: true
-                    width: 3840
-                    height: 2160
+                    width: 1920
+                    height: 1080
 
                 chickens-inside-1:
                   ffmpeg:
@@ -43,9 +42,8 @@ spec:
                         roles:
                           - detect
                   detect:
-                    enabled: true
-                    width: 2560
-                    height: 1920
+                    width: 1280
+                    height: 960
 
                 chickens-inside-2:
                   ffmpeg:
@@ -54,9 +52,8 @@ spec:
                         roles:
                           - detect
                   detect:
-                    enabled: true
-                    width: 2560
-                    height: 1920
+                    width: 1280
+                    height: 960
 
                 coop-low:
                   ffmpeg:
@@ -65,9 +62,8 @@ spec:
                         roles:
                           - detect
                   detect:
-                    enabled: true
-                    width: 2560
-                    height: 1920
+                    width: 1280
+                    height: 960
 
                 coop-high:
                   ffmpeg:
@@ -76,9 +72,8 @@ spec:
                         roles:
                           - detect
                   detect:
-                    enabled: true
-                    width: 2560
-                    height: 1920
+                    width: 1280
+                    height: 960
 
                 chickens-run-sandbox:
                   ffmpeg:
@@ -87,9 +82,8 @@ spec:
                         roles:
                           - detect
                   detect:
-                    enabled: true
-                    width: 2560
-                    height: 1920
+                    width: 1280
+                    height: 960
 
               go2rtc:
                 streams:
@@ -110,6 +104,15 @@ spec:
                 cpu1:
                   type: cpu
                   num_threads: 16
+
+              objects:
+                track:
+                  - person
+                  - bird
+                  - dog
+                  - cat
+                  - horse
+
               " > /config/config.yml
           env:
             - name: FRIGATE_RTSP_PASSWORD
