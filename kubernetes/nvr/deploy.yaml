@@ -19,7 +19,8 @@ spec:
             - sh
             - -c
             - |
-              mkdir -p /config &&
+              mkdir /config
+              mkdir /db
               echo "
               database:
                 path: /db/frigate.db
