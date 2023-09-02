@@ -69,7 +69,7 @@ spec:
                     width: 2560
                     height: 1920
 
-                 coop-high:
+                coop-high:
                   ffmpeg:
                     inputs:
                       - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.124.41:554/h264Preview_01_main
@@ -109,6 +109,8 @@ spec:
               subPath: config.yml
             - name: tmp-cache
               mountPath: /tmp/cache
+            - name: dshm
+              mountPath: /dev/shm
           env:
             - name: FRIGATE_RTSP_PASSWORD
               valueFrom:
@@ -125,3 +127,7 @@ spec:
           emptyDir:
             medium: Memory
             sizeLimit: "8Gi"
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: "4Gi"
