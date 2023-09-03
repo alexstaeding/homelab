@@ -31,6 +31,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.121.105:554/h265Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1920
@@ -42,6 +43,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.153.210:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -53,6 +55,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.119.150:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -64,6 +67,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.162.231:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -75,6 +79,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.124.41:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -86,6 +91,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.172.153:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -97,6 +103,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.100.24:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -108,6 +115,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.148.231:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -119,6 +127,7 @@ spec:
                       - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.194.15:554/h264Preview_01_main
                         roles:
                           - detect
+                          - record
                           - clips
                   detect:
                     width: 1280
@@ -161,6 +170,13 @@ spec:
               snapshots:
                 enabled: true
                 bounding_box: true
+
+              record:
+                enabled: true
+                events:
+                  retain:
+                    default: 10
+                    mode: active_objects
 
               " > /config/config.yml
           env:
