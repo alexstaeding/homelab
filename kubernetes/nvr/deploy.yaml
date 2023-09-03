@@ -28,9 +28,10 @@ spec:
                 roosters-outside-small-cam:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.121.105:554/h265Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.121.105:554/h265Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1920
                     height: 1080
@@ -38,9 +39,10 @@ spec:
                 chickens-inside-1:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.153.210:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.153.210:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -48,9 +50,10 @@ spec:
                 chickens-inside-2:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.119.150:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.119.150:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -58,9 +61,10 @@ spec:
                 coop-low:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.162.231:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.162.231:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -68,9 +72,10 @@ spec:
                 coop-high:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.124.41:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.124.41:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -78,9 +83,10 @@ spec:
                 chickens-run-sandbox:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.172.153:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.172.153:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -88,9 +94,10 @@ spec:
                 roosters-run-front:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.100.24:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.100.24:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -98,9 +105,10 @@ spec:
                 chickens-outside-ptz:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.148.231:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.148.231:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -108,9 +116,10 @@ spec:
                 chickens-outside-2:
                   ffmpeg:
                     inputs:
-                      - path: rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.194.15:554/h264Preview_01_main
+                      - path: rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.194.15:554/h264Preview_01_main
                         roles:
                           - detect
+                          - clips
                   detect:
                     width: 1280
                     height: 960
@@ -118,23 +127,23 @@ spec:
               go2rtc:
                 streams:
                   roosters-outside-small-cam:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.121.105:554/h265Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.121.105:554/h265Preview_01_main
                   chickens-inside-1:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.153.210:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.153.210:554/h264Preview_01_main
                   chickens-inside-2:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.119.150:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.119.150:554/h264Preview_01_main
                   coop-low:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.162.231:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.162.231:554/h264Preview_01_main
                   coop-high:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.124.41:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.124.41:554/h264Preview_01_main
                   chickens-run-sandbox:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.172.153:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.172.153:554/h264Preview_01_main
                   roosters-run-front:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.100.24:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.100.24:554/h264Preview_01_main
                   chickens-outside-ptz:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.148.231:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.148.231:554/h264Preview_01_main
                   chickens-outside-2:
-                    - rtsp://admin:$FRIGATE_RTSP_PASSWORD@10.0.194.15:554/h264Preview_01_main
+                    - rtsp://frigate:$FRIGATE_RTSP_PASSWORD@10.0.194.15:554/h264Preview_01_main
 
               detectors:
                 cpu1:
@@ -148,6 +157,10 @@ spec:
                   - dog
                   - cat
                   - horse
+
+              snapshots:
+                enabled: true
+                bounding_box: true
 
               " > /config/config.yml
           env:
