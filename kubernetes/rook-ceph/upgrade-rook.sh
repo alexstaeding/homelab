@@ -94,7 +94,7 @@ read -p "Would you like to create a Git commit for these changes? (y/n): " choic
 
 case "$choice" in
   y|Y ) git add common.yaml crds.yaml operator.yaml rook-version.txt
-        git commit -m "Upgrade Rook-Ceph to version ${VERSION}"
+        git commit -m "Upgrade rook to version ${VERSION}"
         ;;
   n|N ) echo "Skipping Git commit. You can manually commit the changes later."
         ;;
