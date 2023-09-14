@@ -58,7 +58,7 @@ if [[ "$VERSION" == "$CURRENT_VERSION" ]]; then
     echo "Version ${VERSION} is already installed. Use --force to override. Aborting."
     exit 1
   else
-    echo "Forcing upgrade to the same version ${VERSION}."
+    printf "\033[31mForcing upgrade to the same version ${VERSION}.\033[0m\n"
   fi
 fi
 
@@ -96,7 +96,7 @@ case "$choice" in
   y|Y ) git add common.yaml crds.yaml operator.yaml rook-version.txt
         git commit -m "Upgrade rook to version ${VERSION}"
         ;;
-  n|N ) echo "Skipping Git commit. You can manually commit the changes later."
+  n|N ) printf "\e[33mSkipping Git commit. You can manually commit the changes later.\e[0m"
         ;;
   * )   echo "Invalid option. Skipping Git commit."
         ;;
