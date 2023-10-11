@@ -27,7 +27,6 @@ parameters:
   clusterID: rook-ceph
   fsName: coder-postgres-fs
   pool: coder-postgres-fs-data
-  imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
   csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
   csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
   csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
