@@ -1,7 +1,7 @@
 apiVersion: ceph.rook.io/v1
-kind: CephBlockPool
+kind: CephFilesystem
 metadata:
-  name: coder-postgres-bp
+  name: coder-postgres-fs
   namespace: rook-ceph
 spec:
   metadataPool:
@@ -25,7 +25,8 @@ metadata:
 provisioner: rook-ceph.rbd.csi.ceph.com
 parameters:
   clusterID: rook-ceph
-  pool: coder-postgres-bp-data
+  fsName: coder-postgres-fs
+  pool: coder-postgres-fs-data
   imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
   csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
   csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
