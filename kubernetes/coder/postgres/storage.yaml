@@ -22,7 +22,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: coder-postgres-storage
-provisioner: rook-ceph.rbd.csi.ceph.com
+provisioner: rook-ceph.cephfs.csi.ceph.com
 parameters:
   clusterID: rook-ceph
   fsName: coder-postgres-fs
