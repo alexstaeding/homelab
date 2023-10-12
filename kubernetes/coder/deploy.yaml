@@ -50,9 +50,9 @@ spec:
             - name: CODER_PROMETHEUS_ADDRESS
               value: 0.0.0.0:2112
             - name: CODER_WILDCARD_ACCESS_URL
-              value: "*.coder.sourcegrade.org"
+              value: "*.coder-ophase.ruben-deisenroth.de"
             - name: CODER_ACCESS_URL
-              value: https://coder.sourcegrade.org
+              value: https://coder-ophase.ruben-deisenroth.de
             - name: CODER_OIDC_ISSUER_URL
               value: https://sso.ruben-deisenroth.de/application/o/coder/
             - name: CODER_OIDC_CLIENT_ID
