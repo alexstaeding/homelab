@@ -8,12 +8,8 @@ metadata:
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/part-of: coder
     app.kubernetes.io/version: "0.1.0"
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    metallb.universe.tf/address-pool: address-pool
-    metallb.universe.tf/loadBalancerIPs: 10.0.10.20
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app.kubernetes.io/name: coder
     app.kubernetes.io/instance: release-name
