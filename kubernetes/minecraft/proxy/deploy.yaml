@@ -54,6 +54,10 @@ spec:
           env:
             - name: TYPE
               value: "VELOCITY"
+            - name: VELOCITY_VERSION
+              value: "3.2.0-SNAPSHOT"
+            - name: VELOCITY_BUILD_ID
+              value: "276"
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
