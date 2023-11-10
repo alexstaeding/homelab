@@ -57,6 +57,9 @@ spec:
               value: "2G"
             - name: "MAX_MEMORY"
               value: "8G"
+            - name: PLUGINS
+              value: |
+                https://github.com/ViaVersion/ViaBackwards/releases/download/4.8.1/ViaBackwards-4.8.1.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
