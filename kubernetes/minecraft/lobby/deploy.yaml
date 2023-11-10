@@ -64,6 +64,12 @@ spec:
         - name: patch-definitions-volume
           configMap:
             name: paper-patches
-        - name: minecraft-lobby-volume
-          persistentVolumeClaim:
-            claimName: minecraft-lobby-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: "minecraft-storage"
+        resources:
+          requests:
+            storage: 32Gi
