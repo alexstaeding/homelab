@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minecraft-atm9
+  namespace: minecraft
+  labels:
+    app: minecraft-atm9
+spec:
+  serviceName: "minecraft-atm9-service-internal"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-atm9
+  template:
+    metadata:
+      labels:
+        app: minecraft-atm9
+    spec:
+      initContainers:
+        - name: init-server-properties
+          image: busybox
+          command: [ 'cp', '/config/server.properties', '/data/server.properties' ]
+          volumeMounts:
+            - name: backend-patches-volume
+              mountPath: /config
+            - name: data-volume
+              mountPath: /data
+      containers:
+        - name: minecraft-atm9
+          image: itzg/minecraft-server:java17
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+          env:
+            - name: CFG_PROXY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minecraft-proxy-secret
+                  key: secret-value
+            - name: CFG_VELOCITY_ENABLED
+              value: "true"
+            - name: REPLACE_ENV_VARIABLE_PREFIX
+              value: "CFG_"
+            - name: TYPE
+              value: "AUTO_CURSEFORGE"
+            - name: CF_SLUG
+              value: "all-the-mods-9"
+            - name: EULA
+              value: "true"
+            - name: USE_AIKAR_FLAGS
+              value: "true"
+            - name: "INIT_MEMORY"
+              value: "24G"
+            - name: "MAX_MEMORY"
+              value: "32G"
+            - name: RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rcon-web-secret
+                  key: RCON_PASSWORD
+      volumes:
+        - name: backend-patches-volume
+          configMap:
+            name: backend-patches
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: "minecraft-storage"
+        resources:
+          requests:
+            storage: 32Gi
