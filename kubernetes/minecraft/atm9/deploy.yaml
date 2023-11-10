@@ -19,7 +19,12 @@ spec:
       initContainers:
         - name: init-server-properties
           image: busybox
-          command: [ 'cp', '/config/server.properties', '/data/server.properties' ]
+          command:
+            - sh
+            - -c
+            - |
+              cp /config/server.properties /data/server.properties
+              chmod 664 /data/server.properties
           volumeMounts:
             - name: backend-patches-volume
               mountPath: /config
