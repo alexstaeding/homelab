@@ -16,21 +16,41 @@ spec:
       labels:
         app: minecraft-vanilla
     spec:
+      initContainers:
+        - name: init-server-properties
+          image: busybox
+          command: [ 'sh', '-c', 'sed -i "s/online-mode=true/online-mode=false/" /data/server.properties' ]
+          volumeMounts:
+            - name: minecraft-vanilla-volume
+              mountPath: /data
       containers:
         - name: minecraft-vanilla
           image: itzg/minecraft-server:java17
           ports:
             - containerPort: 25565
           volumeMounts:
+            - name: patch-definitions-volume
+              mountPath: /config
             - name: minecraft-vanilla-volume
               mountPath: /data
           env:
+            - name: CFG_PROXY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minecraft-proxy-secret
+                  key: secret-value
+            - name: CFG_VELOCITY_ENABLED
+              value: "true"
+            - name: REPLACE_ENV_VARIABLE_PREFIX
+              value: "CFG_"
+            - name: PATCH_DEFINITIONS
+              value: "/config/patch-set.json"
             - name: TYPE
               value: "PAPER"
             - name: EULA
-              value: "TRUE"
+              value: "true"
             - name: USE_AIKAR_FLAGS
-              value: "TRUE"
+              value: "true"
             - name: "INIT_MEMORY"
               value: "2G"
             - name: "MAX_MEMORY"
@@ -40,6 +60,10 @@ spec:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
+      volumes:
+        - name: patch-definitions-volume
+          configMap:
+            name: paper-patches
   volumeClaimTemplates:
     - metadata:
         name: minecraft-vanilla-volume

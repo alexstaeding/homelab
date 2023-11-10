@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: paper-patches
+  namespace: minecraft
+data:
+  patch-set.json: |
+    {
+      "patches": [
+        {
+          "file": "/data/config/paper-global.yml",
+          "ops": [
+            {
+              "$set": {
+                "path": "$.proxies.velocity.enabled",
+                "value": "${CFG_VELOCITY_ENABLED}",
+                "value-type": "bool"
+              }
+            },
+            {
+              "$set": {
+                "path": "$.proxies.velocity.online-mode",
+                "value": "true",
+                "value-type": "bool"
+              }
+            },
+            {
+              "$set": {
+                "path": "$.proxies.velocity.secret",
+                "value": "${CFG_PROXY_SECRET}"
+              }
+            }
+          ]
+        }
+      ]
+    }
