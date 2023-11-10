@@ -62,6 +62,9 @@ spec:
               value: "3.2.0-SNAPSHOT"
             - name: VELOCITY_BUILD_ID
               value: "276"
+            - name: PLUGINS
+              value: |
+                https://github.com/adde0109/Ambassador/releases/download/v1.4.3-beta/Ambassador-Velocity-1.4.3-beta-all.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
