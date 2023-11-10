@@ -21,7 +21,7 @@ spec:
           image: busybox
           command: [ 'sh', '-c', 'sed -i "s/online-mode=true/online-mode=false/" /data/server.properties' ]
           volumeMounts:
-            - name: minecraft-vanilla-volume
+            - name: minecraft-lobby-volume
               mountPath: /data
       containers:
         - name: minecraft-lobby

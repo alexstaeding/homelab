@@ -28,7 +28,7 @@ spec:
                 wget -O /server/velocity.toml https://raw.githubusercontent.com/PaperMC/Velocity/dev/3.0.0/proxy/src/main/resources/default-velocity.toml
               fi
               if [ ! -f /server/forwarding.secret ]; then
-                cat $CFG_PROXY_SECRET > /server/forwarding.secret
+                echo $CFG_PROXY_SECRET > /server/forwarding.secret
               fi
           env:
             - name: CFG_PROXY_SECRET
