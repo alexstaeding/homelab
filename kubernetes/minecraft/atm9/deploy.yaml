@@ -45,6 +45,11 @@ spec:
               value: "CFG_"
             - name: TYPE
               value: "AUTO_CURSEFORGE"
+            - name: CF_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: curseforge-secret
+                  key: api-key
             - name: CF_SLUG
               value: "all-the-mods-9"
             - name: EULA
