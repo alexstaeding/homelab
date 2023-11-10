@@ -16,20 +16,6 @@ spec:
       labels:
         app: minecraft-atm9
     spec:
-      initContainers:
-        - name: init-server-properties
-          image: busybox
-          command:
-            - sh
-            - -c
-            - |
-              cp /config/server.properties /data/server.properties
-              chmod 664 /data/server.properties
-          volumeMounts:
-            - name: backend-patches-volume
-              mountPath: /config
-            - name: data-volume
-              mountPath: /data
       containers:
         - name: minecraft-atm9
           image: itzg/minecraft-server:java21
@@ -61,6 +47,8 @@ spec:
               value: "true"
             - name: USE_AIKAR_FLAGS
               value: "true"
+            - name: ONLINE_MODE
+              value: "false"
             - name: "INIT_MEMORY"
               value: "24G"
             - name: "MAX_MEMORY"
@@ -70,10 +58,6 @@ spec:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
-      volumes:
-        - name: backend-patches-volume
-          configMap:
-            name: backend-patches
   volumeClaimTemplates:
     - metadata:
         name: data-volume
