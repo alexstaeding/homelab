@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minecraft-vanilla
+  namespace: minecraft
+  labels:
+    app: minecraft-vanilla
+spec:
+  serviceName: "minecraft-vanilla-service-internal"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-vanilla
+  template:
+    metadata:
+      labels:
+        app: minecraft-vanilla
+    spec:
+      containers:
+        - name: minecraft-vanilla
+          image: itzg/minecraft-server:java17
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - name: minecraft-vanilla-volume
+              mountPath: /data
+          env:
+            - name: TYPE
+              value: "PAPER"
+            - name: EULA
+              value: "TRUE"
+            - name: USE_AIKAR_FLAGS
+              value: "TRUE"
+            - name: "INIT_MEMORY"
+              value: "2G"
+            - name: "MAX_MEMORY"
+              value: "8G"
+            - name: RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rcon-web-secret
+                  key: RCON_PASSWORD
+  volumeClaimTemplates:
+    - metadata:
+        name: minecraft-vanilla-volume
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: "minecraft-storage"
+        resources:
+          requests:
+            storage: 32Gi
