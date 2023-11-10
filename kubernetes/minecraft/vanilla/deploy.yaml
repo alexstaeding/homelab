@@ -6,7 +6,7 @@ metadata:
   labels:
     app: minecraft-vanilla
 spec:
-  serviceName: "service-internal"
+  serviceName: "minecraft-vanilla-service-internal"
   replicas: 2
   selector:
     matchLabels:
