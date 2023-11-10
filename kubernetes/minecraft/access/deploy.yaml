@@ -17,15 +17,15 @@ spec:
           image: filebrowser/filebrowser
           volumeMounts:
             - name: minecraft-proxy-volume
-              mountPath: /servers/proxy
+              mountPath: /srv/servers/proxy
             - name: data-volume-minecraft-lobby-0
-              mountPath: /servers/lobby-0
+              mountPath: /srv/servers/lobby-0
             - name: data-volume-minecraft-vanilla-0
-              mountPath: /servers/vanilla-0
+              mountPath: /srv/servers/vanilla-0
             - name: data-volume-minecraft-vanilla-1
-              mountPath: /servers/vanilla-1
+              mountPath: /srv/servers/vanilla-1
             - name: data-volume-minecraft-atm9-0
-              mountPath: /servers/atm9-0
+              mountPath: /srv/servers/atm9-0
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
