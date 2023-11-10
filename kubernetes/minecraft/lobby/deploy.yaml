@@ -6,7 +6,7 @@ metadata:
   labels:
     app: minecraft-lobby
 spec:
-  serviceName: "minecraft-lobby-service-internal"
+  serviceName: "service-internal"
   replicas: 1
   selector:
     matchLabels:
