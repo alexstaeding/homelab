@@ -1,31 +1,50 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: minecraft-lobby
   namespace: minecraft
   labels:
     app: minecraft-lobby
 spec:
+  serviceName: "minecraft-lobby-service-internal"
+  replicas: 1
   selector:
     matchLabels:
       app: minecraft-lobby
-  strategy:
-    type: Recreate
-  replicas: 1
   template:
     metadata:
       labels:
         app: minecraft-lobby
     spec:
+      initContainers:
+        - name: init-server-properties
+          image: busybox
+          command: [ 'sh', '-c', 'sed -i "s/online-mode=true/online-mode=false/" /data/server.properties' ]
+          volumeMounts:
+            - name: minecraft-vanilla-volume
+              mountPath: /data
       containers:
         - name: minecraft-lobby
           image: itzg/minecraft-server:java17
           ports:
             - containerPort: 25565
           volumeMounts:
+            - name: patch-definitions-volume
+              mountPath: /config
             - name: minecraft-lobby-volume
               mountPath: /data
           env:
+            - name: CFG_PROXY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minecraft-proxy-secret
+                  key: secret-value
+            - name: CFG_VELOCITY_ENABLED
+              value: "true"
+            - name: REPLACE_ENV_VARIABLE_PREFIX
+              value: "CFG_"
+            - name: PATCH_DEFINITIONS
+              value: "/config/patch-set.json"
             - name: TYPE
               value: "PAPER"
             - name: EULA
@@ -42,6 +61,9 @@ spec:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
       volumes:
+        - name: patch-definitions-volume
+          configMap:
+            name: paper-patches
         - name: minecraft-lobby-volume
           persistentVolumeClaim:
             claimName: minecraft-lobby-pvc

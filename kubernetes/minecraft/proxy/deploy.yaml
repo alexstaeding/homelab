@@ -28,8 +28,14 @@ spec:
                 wget -O /server/velocity.toml https://raw.githubusercontent.com/PaperMC/Velocity/dev/3.0.0/proxy/src/main/resources/default-velocity.toml
               fi
               if [ ! -f /server/forwarding.secret ]; then
-                dd if=/dev/urandom bs=1 count=64 2>/dev/null | base64 > /server/forwarding.secret
+                cat $CFG_PROXY_SECRET > /server/forwarding.secret
               fi
+          env:
+            - name: CFG_PROXY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minecraft-proxy-secret
+                  key: secret-value
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /server
