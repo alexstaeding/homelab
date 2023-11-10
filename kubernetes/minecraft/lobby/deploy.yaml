@@ -59,6 +59,7 @@ spec:
               value: "8G"
             - name: PLUGINS
               value: |
+                https://github.com/ViaVersion/ViaVersion/releases/download/4.8.1/ViaVersion-4.8.1.jar
                 https://github.com/ViaVersion/ViaBackwards/releases/download/4.8.1/ViaBackwards-4.8.1.jar
             - name: RCON_PASSWORD
               valueFrom:
