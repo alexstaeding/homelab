@@ -15,12 +15,32 @@ spec:
       containers:
         - name: minecraft-access
           image: debian:bookworm
-          command: ["/bin/bash", "-c", "--"]
-          args: ["while true; do sleep 30; done;"]
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /servers/proxy
+            - name: data-volume-minecraft-lobby-0
+              mountPath: /servers/lobby-0
+            - name: data-volume-minecraft-vanilla-0
+              mountPath: /servers/vanilla-0
+            - name: data-volume-minecraft-vanilla-1
+              mountPath: /servers/vanilla-1
+            - name: data-volume-minecraft-atm9-0
+              mountPath: /servers/atm9-0
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
             claimName: minecraft-proxy-pvc
+        - name: data-volume-minecraft-lobby-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-lobby-0
+        - name: data-volume-minecraft-vanilla-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-vanilla-0
+        - name: data-volume-minecraft-vanilla-1
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-vanilla-1
+        - name: data-volume-minecraft-atm9-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-atm9-0
