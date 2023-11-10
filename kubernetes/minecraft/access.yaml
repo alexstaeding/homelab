@@ -20,12 +20,7 @@ spec:
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /servers/proxy
-            - name: minecraft-lobby-volume
-              mountPath: /servers/lobby
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
             claimName: minecraft-proxy-pvc
-        - name: minecraft-lobby-volume
-          persistentVolumeClaim:
-            claimName: minecraft-lobby-pvc
