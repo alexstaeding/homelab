@@ -14,9 +14,7 @@ spec:
     spec:
       containers:
         - name: minecraft-access
-          image: debian:bookworm
-          command: [ "/bin/bash", "-c", "--" ]
-          args: [ "while true; do sleep 30; done;" ]
+          image: filebrowser/filebrowser
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /servers/proxy
