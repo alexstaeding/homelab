@@ -19,8 +19,10 @@ spec:
       initContainers:
         - name: init-server-properties
           image: busybox
-          command: [ 'sh', '-c', 'sed -i "s/online-mode=true/online-mode=false/" /data/server.properties' ]
+          command: [ 'cp', '/config/server.properties', '/data/server.properties' ]
           volumeMounts:
+            - name: backend-patches-volume
+              mountPath: /config
             - name: data-volume
               mountPath: /data
       containers:
@@ -29,7 +31,7 @@ spec:
           ports:
             - containerPort: 25565
           volumeMounts:
-            - name: patch-definitions-volume
+            - name: paper-patches-volume
               mountPath: /config
             - name: data-volume
               mountPath: /data
@@ -48,9 +50,9 @@ spec:
             - name: TYPE
               value: "PAPER"
             - name: EULA
-              value: "TRUE"
+              value: "true"
             - name: USE_AIKAR_FLAGS
-              value: "TRUE"
+              value: "true"
             - name: "INIT_MEMORY"
               value: "2G"
             - name: "MAX_MEMORY"
@@ -61,9 +63,12 @@ spec:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
       volumes:
-        - name: patch-definitions-volume
+        - name: paper-patches-volume
           configMap:
             name: paper-patches
+        - name: backend-patches-volume
+          configMap:
+            name: backend-patches
   volumeClaimTemplates:
     - metadata:
         name: data-volume
