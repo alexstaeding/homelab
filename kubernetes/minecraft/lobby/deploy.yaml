@@ -16,15 +16,6 @@ spec:
       labels:
         app: minecraft-lobby
     spec:
-      initContainers:
-        - name: init-server-properties
-          image: busybox
-          command: [ 'cp', '/config/server.properties', '/data/server.properties' ]
-          volumeMounts:
-            - name: backend-patches-volume
-              mountPath: /config
-            - name: data-volume
-              mountPath: /data
       containers:
         - name: minecraft-lobby
           image: itzg/minecraft-server:java17
@@ -61,6 +52,7 @@ spec:
               value: |
                 https://github.com/ViaVersion/ViaVersion/releases/download/4.8.1/ViaVersion-4.8.1.jar
                 https://github.com/ViaVersion/ViaBackwards/releases/download/4.8.1/ViaBackwards-4.8.1.jar
+                https://github.com/4drian3d/SignedVelocity/releases/download/1.2.1/SignedVelocity-Paper-1.2.1.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -70,9 +62,6 @@ spec:
         - name: paper-patches-volume
           configMap:
             name: paper-patches
-        - name: backend-patches-volume
-          configMap:
-            name: backend-patches
   volumeClaimTemplates:
     - metadata:
         name: data-volume
