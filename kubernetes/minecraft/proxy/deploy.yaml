@@ -66,7 +66,6 @@ spec:
               value: |
                 https://github.com/adde0109/Ambassador/releases/download/v1.4.3-beta/Ambassador-Velocity-1.4.3-beta-all.jar
                 https://github.com/WiIIiam278/HuskChat/releases/download/2.7.1/HuskChat-2.7.1.jar
-                https://github.com/4drian3d/UnSignedVelocity/releases/download/1.4.2/UnSignedVelocity-1.4.2.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
