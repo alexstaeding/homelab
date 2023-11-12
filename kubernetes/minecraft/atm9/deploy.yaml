@@ -7,7 +7,7 @@ metadata:
     app: minecraft-atm9
 spec:
   serviceName: "minecraft-atm9-service-internal"
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: minecraft-atm9
@@ -25,6 +25,10 @@ spec:
             - name: data-volume
               mountPath: /data
           env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: CFG_PROXY_SECRET
               valueFrom:
                 secretKeyRef:
@@ -50,7 +54,7 @@ spec:
             - name: ONLINE_MODE
               value: "false"
             - name: MOTD
-              value: "\u00A76Server-${POD_NAME}"
+              value: "\u00A76Server-$(POD_NAME)"
             - name: "INIT_MEMORY"
               value: "24G"
             - name: "MAX_MEMORY"

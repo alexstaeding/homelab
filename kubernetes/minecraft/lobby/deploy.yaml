@@ -27,6 +27,10 @@ spec:
             - name: data-volume
               mountPath: /data
           env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: CFG_PROXY_SECRET
               valueFrom:
                 secretKeyRef:
@@ -44,6 +48,10 @@ spec:
               value: "true"
             - name: USE_AIKAR_FLAGS
               value: "true"
+            - name: ONLINE_MODE
+              value: "false"
+            - name: MOTD
+              value: "\u00A76Server-$(POD_NAME)"
             - name: "INIT_MEMORY"
               value: "2G"
             - name: "MAX_MEMORY"
