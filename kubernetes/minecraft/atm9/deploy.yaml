@@ -59,7 +59,7 @@ spec:
               value: "24G"
             - name: "MAX_MEMORY"
               value: "32G"
-            - name: EXTRA_ARGS
+            - name: JVM_OPTS
               value: "-Dfml.readTimeout=120"
             - name: MODS
               value: |
