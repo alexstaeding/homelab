@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: minecraft-ups
-          image: itzg/minecraft-server:2023.11.0-java21
+          image: itzg/minecraft-server:2023.11.0-java17
           ports:
             - containerPort: 25565
           volumeMounts:
