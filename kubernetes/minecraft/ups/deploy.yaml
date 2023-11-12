@@ -60,7 +60,7 @@ spec:
             - name: "MAX_MEMORY"
               value: "32G"
             - name: JVM_OPTS
-              value: "-Dfml.readTimeout=120 --add-exports java.base/sun.security.util=ALL-UNNAMED"
+              value: "-Dfml.readTimeout=120 --add-exports java.base/sun.security.util=ALL-UNNAMED --add-opens java.base/java.util.jar=ALL-UNNAMED"
             - name: MODS
               value: |
                 https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.4/proxy-compatible-forge-1.20-1.1.4.jar
