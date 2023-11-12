@@ -59,6 +59,8 @@ spec:
               value: "24G"
             - name: "MAX_MEMORY"
               value: "32G"
+            - name: EXTRA_ARGS
+              value: "-Dfml.readTimeout=120"
             - name: MODS
               value: |
                 https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.4/proxy-compatible-forge-1.20-1.1.4.jar
