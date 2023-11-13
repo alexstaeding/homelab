@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-operator
+  namespace: postgres-operator
+  labels:
+    application: postgres-operator
+spec:
+  replicas: 1
+  strategy:
+    type: "Recreate"
+  selector:
+    matchLabels:
+      name: postgres-operator
+  template:
+    metadata:
+      labels:
+        name: postgres-operator
+    spec:
+      serviceAccountName: postgres-operator
+      containers:
+        - name: postgres-operator
+          image: registry.opensource.zalan.do/acid/postgres-operator:v1.10.1
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 1000
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+          env:
+            - name: POSTGRES_OPERATOR_CONFIGURATION_OBJECT
+              value: postgresql-operator-default-configuration
