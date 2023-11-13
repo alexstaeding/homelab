@@ -1,7 +1,7 @@
 apiVersion: acid.zalan.do/v1
 kind: OperatorConfiguration
 metadata:
-  name: postgresql-operator-default-configuration
+  name: postgres-operator-config
   namespace: postgres-operator
 configuration:
   docker_image: ghcr.io/zalando/spilo-15:3.0-p1

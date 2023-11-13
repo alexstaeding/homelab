@@ -29,4 +29,4 @@ spec:
             allowPrivilegeEscalation: false
           env:
             - name: POSTGRES_OPERATOR_CONFIGURATION_OBJECT
-              value: postgresql-operator-default-configuration
+              value: postgres-operator-config
