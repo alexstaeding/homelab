@@ -48,7 +48,7 @@ spec:
             - name: CF_SLUG
               value: "ultimate-progression-sky"
             - name: CF_EXCLUDE_MODS
-              value: "292899" # ShulkerTooltip
+              value: "292899,459727" # Shulker Tooltip, Hidden Recipe Book
             - name: EULA
               value: "true"
             - name: USE_AIKAR_FLAGS
