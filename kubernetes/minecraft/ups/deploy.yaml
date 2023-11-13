@@ -47,6 +47,8 @@ spec:
                   key: api-key
             - name: CF_SLUG
               value: "ultimate-progression-sky"
+            - name: CF_EXCLUDE_MODS
+              value: "292899" # ShulkerTooltip
             - name: EULA
               value: "true"
             - name: USE_AIKAR_FLAGS
