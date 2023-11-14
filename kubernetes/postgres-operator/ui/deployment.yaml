@@ -31,7 +31,7 @@ spec:
           env:
             - name: APP_URL
               value: "http://localhost"
-            - name: OPERATOR_API_URL"
+            - name: OPERATOR_API_URL
               value: "http://postgres-operator"
             - name: OPERATOR_CLUSTER_NAME_LABEL
               value: "postgres-operator-cluster"
