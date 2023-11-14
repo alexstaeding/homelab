@@ -20,12 +20,12 @@ spec:
         - name: service
           image: registry.opensource.zalan.do/acid/postgres-operator-ui:v1.10.1
           ports:
-            - containerPort: 80
+            - containerPort: 8081
               protocol: TCP
           readinessProbe:
             httpGet:
               path: "/health"
-              port: 80
+              port: 8081
             initialDelaySeconds: 5
             timeoutSeconds: 1
           env:
