@@ -972,6 +972,12 @@ spec:
                       maximum: 65535
                       minimum: 0
                       type: integer
+                    prometheusEndpoint:
+                      description: Endpoint for the Prometheus host
+                      type: string
+                    prometheusEndpointSSLVerify:
+                      description: Whether to verify the ssl endpoint for prometheus. Set to false for a self-signed cert.
+                      type: boolean
                     ssl:
                       description: SSL determines whether SSL should be used
                       type: boolean
@@ -1321,8 +1327,8 @@ spec:
                       description: AllowMultiplePerNode allows to run multiple managers on the same node (not recommended)
                       type: boolean
                     count:
-                      description: Count is the number of manager to run
-                      maximum: 2
+                      description: Count is the number of manager daemons to run
+                      maximum: 5
                       minimum: 0
                       type: integer
                     modules:
@@ -2123,6 +2129,25 @@ spec:
                   description: Network related configuration
                   nullable: true
                   properties:
+                    addressRanges:
+                      description: AddressRanges specify a list of CIDRs that Rook will apply to Ceph's 'public_network' and/or 'cluster_network' configurations. This config section may be used for the "host" or "multus" network providers.
+                      nullable: true
+                      properties:
+                        cluster:
+                          description: Cluster defines a list of CIDRs to use for Ceph cluster network communication.
+                          items:
+                            description: "An IPv4 or IPv6 network CIDR. \n This naive kubebuilder regex provides immediate feedback for some typos and for a common problem case where the range spec is forgotten (e.g., /24). Rook does in-depth validation in code."
+                            pattern: ^[0-9a-fA-F:.]{2,}\/[0-9]{1,3}$
+                            type: string
+                          type: array
+                        public:
+                          description: Public defines a list of CIDRs to use for Ceph public network communication.
+                          items:
+                            description: "An IPv4 or IPv6 network CIDR. \n This naive kubebuilder regex provides immediate feedback for some typos and for a common problem case where the range spec is forgotten (e.g., /24). Rook does in-depth validation in code."
+                            pattern: ^[0-9a-fA-F:.]{2,}\/[0-9]{1,3}$
+                            type: string
+                          type: array
+                      type: object
                     connections:
                       description: Settings for network connections such as compression and encryption across the wire.
                       nullable: true
@@ -2172,12 +2197,16 @@ spec:
                       type: object
                     provider:
                       description: Provider is what provides network connectivity to the cluster e.g. "host" or "multus"
+                      enum:
+                        - ""
+                        - host
+                        - multus
                       nullable: true
                       type: string
                     selectors:
                       additionalProperties:
                         type: string
-                      description: Selectors string values describe what networks will be used to connect the cluster. Meanwhile the keys describe each network respective responsibilities or any metadata storage provider decide.
+                      description: "Selectors define NetworkAttachmentDefinitions to be used for Ceph public and/or cluster networks when the \"multus\" network provider is used. This config section is not used for other network providers. \n Valid keys are \"public\" and \"cluster\". Refer to Ceph networking documentation for more: https://docs.ceph.com/en/reef/rados/configuration/network-config-ref/ \n Refer to Multus network annotation documentation for help selecting values: https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/how-to-use.md#run-pod-with-network-annotation \n Rook will make a best-effort attempt to automatically detect CIDR address ranges for given network attachment definitions. Rook's methods are robust but may be imprecise for sufficiently complicated networks. Rook's auto-detection process obtains a new IP address lease for each CephCluster reconcile. If Rook fails to detect, incorrectly detects, only partially detects, or if underlying networks do not support reusing old IP addresses, it is best to use the 'addressRanges' config section to specify CIDR ranges for the Ceph cluster. \n As a contrived example, one can use a theoretical Kubernetes-wide network for Ceph client traffic and a theoretical Rook-only network for Ceph replication traffic as shown: selectors: public: \"default/cluster-fast-net\" cluster: \"rook-ceph/ceph-backend-net\""
                       nullable: true
                       type: object
                   type: object
@@ -2872,6 +2901,9 @@ spec:
                       nullable: true
                       type: array
                       x-kubernetes-preserve-unknown-fields: true
+                    flappingRestartIntervalHours:
+                      description: FlappingRestartIntervalHours defines the time for which the OSD pods, that failed with zero exit code, will sleep before restarting. This is needed for OSD flapping where OSD daemons are marked down more than 5 times in 600 seconds by Ceph. Preventing the OSD pods to restart immediately in such scenarios will prevent Rook from marking OSD as `up` and thus peering of the PGs mapped to the OSD. User needs to manually restart the OSD pod if they manage to fix the underlying OSD flapping issue before the restart interval. The sleep will be disabled if this interval is set to 0.
+                      type: integer
                     nodes:
                       items:
                         description: Node is a storage nodes
@@ -9122,6 +9154,115 @@ spec:
                       nullable: true
                       type: object
                       x-kubernetes-preserve-unknown-fields: true
+                    livenessProbe:
+                      description: A liveness-probe to verify that Ganesha server has valid run-time state. If LivenessProbe.Disabled is false and LivenessProbe.Probe is nil uses default probe.
+                      properties:
+                        disabled:
+                          description: Disabled determines whether probe is disable or not
+                          type: boolean
+                        probe:
+                          description: Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+                          properties:
+                            exec:
+                              description: Exec specifies the action to take.
+                              properties:
+                                command:
+                                  description: Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+                                  items:
+                                    type: string
+                                  type: array
+                              type: object
+                            failureThreshold:
+                              description: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+                              format: int32
+                              type: integer
+                            grpc:
+                              description: GRPC specifies an action involving a GRPC port.
+                              properties:
+                                port:
+                                  description: Port number of the gRPC service. Number must be in the range 1 to 65535.
+                                  format: int32
+                                  type: integer
+                                service:
+                                  description: "Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). \n If this is not specified, the default behavior is defined by gRPC."
+                                  type: string
+                              required:
+                                - port
+                              type: object
+                            httpGet:
+                              description: HTTPGet specifies the http request to perform.
+                              properties:
+                                host:
+                                  description: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+                                  type: string
+                                httpHeaders:
+                                  description: Custom headers to set in the request. HTTP allows repeated headers.
+                                  items:
+                                    description: HTTPHeader describes a custom header to be used in HTTP probes
+                                    properties:
+                                      name:
+                                        description: The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
+                                        type: string
+                                      value:
+                                        description: The header field value
+                                        type: string
+                                    required:
+                                      - name
+                                      - value
+                                    type: object
+                                  type: array
+                                path:
+                                  description: Path to access on the HTTP server.
+                                  type: string
+                                port:
+                                  anyOf:
+                                    - type: integer
+                                    - type: string
+                                  description: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+                                  x-kubernetes-int-or-string: true
+                                scheme:
+                                  description: Scheme to use for connecting to the host. Defaults to HTTP.
+                                  type: string
+                              required:
+                                - port
+                              type: object
+                            initialDelaySeconds:
+                              description: 'Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes'
+                              format: int32
+                              type: integer
+                            periodSeconds:
+                              description: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+                              format: int32
+                              type: integer
+                            successThreshold:
+                              description: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.
+                              format: int32
+                              type: integer
+                            tcpSocket:
+                              description: TCPSocket specifies an action involving a TCP port.
+                              properties:
+                                host:
+                                  description: 'Optional: Host name to connect to, defaults to the pod IP.'
+                                  type: string
+                                port:
+                                  anyOf:
+                                    - type: integer
+                                    - type: string
+                                  description: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+                                  x-kubernetes-int-or-string: true
+                              required:
+                                - port
+                              type: object
+                            terminationGracePeriodSeconds:
+                              description: Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.
+                              format: int64
+                              type: integer
+                            timeoutSeconds:
+                              description: 'Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes'
+                              format: int32
+                              type: integer
+                          type: object
+                      type: object
                     logLevel:
                       description: LogLevel set logging level
                       type: string
