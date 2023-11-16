@@ -75,7 +75,7 @@ elif ! is_tag $VERSION; then
 fi
 
 # Update operator.yaml file
-sed -i "s|image: rook/ceph:.*|image: rook/ceph:${VERSION}|" operator.yaml
+sed -i '' -e "s|image: rook/ceph:.*|image: rook/ceph:${VERSION}|" operator.yaml
 
 # Fetch the new YAML files
 COMMON_URL="https://raw.githubusercontent.com/rook/rook/${VERSION}/deploy/examples/common.yaml"

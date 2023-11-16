@@ -67,7 +67,7 @@ else
 fi
 
 # Update the cluster.yaml file
-sed -i "s|image: quay.io/ceph/ceph:.*|image: quay.io/ceph/ceph:${VERSION}|" cluster.yaml
+sed -i '' -e "s|image: quay.io/ceph/ceph:.*|image: quay.io/ceph/ceph:${VERSION}|" cluster.yaml
 
 # Update suggestion
 echo "cluster.yaml has been updated to version ${VERSION}."
