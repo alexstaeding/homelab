@@ -39,7 +39,7 @@ spec:
               mountPath: /server
       containers:
         - name: minecraft-proxy
-          image: itzg/bungeecord:java17
+          image: itzg/minecraft-server:2023.11.1-java21
           ports:
             - containerPort: 25577
           volumeMounts:

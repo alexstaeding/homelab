@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: minecraft-lobby
-          image: itzg/minecraft-server:java17
+          image: itzg/minecraft-server:2023.11.1-java21
           ports:
             - containerPort: 25565
           volumeMounts:
