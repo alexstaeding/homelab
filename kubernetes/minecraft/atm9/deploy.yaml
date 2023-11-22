@@ -64,7 +64,7 @@ spec:
             - name: MODS
               value: |
                 https://cdn.modrinth.com/data/vDyrHl8l/versions/K43ePlgq/proxy-compatible-forge-1.20-1.1.4.jar
-                https://download.luckperms.net/1521/velocity/LuckPerms-Velocity-5.4.108.jar
+                https://download.luckperms.net/1521/forge/loader/LuckPerms-Forge-5.4.108.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
