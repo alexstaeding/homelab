@@ -64,6 +64,7 @@ spec:
             - name: MODS
               value: |
                 https://github.com/adde0109/Proxy-Compatible-Forge/releases/download/1.1.4/proxy-compatible-forge-1.20-1.1.4.jar
+                https://download.luckperms.net/1521/velocity/LuckPerms-Velocity-5.4.108.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
