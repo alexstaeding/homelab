@@ -47,6 +47,8 @@ spec:
                   key: api-key
             - name: CF_SLUG
               value: "all-the-mods-9"
+            - name: CF_FILENAME_MATCHER
+              value: "0.2.21"
             - name: EULA
               value: "true"
             - name: USE_AIKAR_FLAGS
