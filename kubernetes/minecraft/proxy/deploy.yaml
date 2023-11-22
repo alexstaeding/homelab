@@ -64,9 +64,9 @@ spec:
               value: "276"
             - name: PLUGINS
               value: |
-                https://github.com/adde0109/Ambassador/releases/download/v1.4.3-beta/Ambassador-Velocity-1.4.3-beta-all.jar
-                https://github.com/WiIIiam278/HuskChat/releases/download/2.7.1/HuskChat-2.7.1.jar
-                https://github.com/4drian3d/SignedVelocity/releases/download/1.2.1/SignedVelocity-Proxy-1.2.1.jar
+                https://cdn.modrinth.com/data/cOj6YqJM/versions/tz9RoCFT/Ambassador-Velocity-1.4.3-beta-all.jar
+                https://www.spigotmc.org/resources/huskchat-elegant-beautiful-chat-discord-hook-ai-filters-emojis-group-pms-customizible.94496/download?version=517007
+                https://cdn.modrinth.com/data/7IbzD4Zm/versions/XDSKb8fH/SignedVelocity-Proxy-1.2.1.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
