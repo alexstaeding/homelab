@@ -14,9 +14,13 @@ spec:
       labels:
         app: nexus
     spec:
+      securityContext:
+        fsGroup: 200  # Group ID for volume
       containers:
         - name: nexus
           image: sonatype/nexus3:3.62.0
+          securityContext:
+            runAsUser: 200  # User ID
           ports:
             - containerPort: 8081
           volumeMounts:
