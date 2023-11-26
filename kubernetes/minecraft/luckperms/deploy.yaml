@@ -25,10 +25,10 @@ spec:
             - name: LUCKPERMS_DATA_USERNAME
               valueFrom:
                 secretKeyRef:
-                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
-                key: username
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
             - name: LUCKPERMS_DATA_PASSWORD
               valueFrom:
                 secretKeyRef:
-                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
-                key: password
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: password

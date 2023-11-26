@@ -88,13 +88,13 @@ spec:
             - name: CFG_LP_USERNAME
               valueFrom:
                 secretKeyRef:
-                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
-                key: username
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
             - name: CFG_LP_PASSWORD
               valueFrom:
                 secretKeyRef:
-                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
-                key: password
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: password
             - name: CATALYST_DB_URL
               value: "jdbc:postgresql://minecraft-postgres.minecraft:5432/catalyst"
             - name: CATALYST_DB_USER
@@ -112,8 +112,8 @@ spec:
             - name: CATALYST_DISCORD_BOT_TOKEN
               valueFrom:
                 secretKeyRef:
-                name: catalyst-tokens
-                key: discord-bot-token
+                  name: catalyst-tokens
+                  key: discord-bot-token
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
