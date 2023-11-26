@@ -1,0 +1,20 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: minecraft-postgres
+  namespace: minecraft
+spec:
+  teamId: minecraft
+  volume:
+    size: 32Gi
+  numberOfInstances: 2
+  users:
+    catalyst:
+      - login
+    luckperms:
+      - login
+  databases:
+    catalyst: catalyst
+    luckperms: luckperms
+  postgresql:
+    version: "15"
