@@ -39,7 +39,7 @@ spec:
               mountPath: /server
       containers:
         - name: minecraft-proxy
-          image: itzg/bungeecord:java17
+          image: itzg/bungeecord:java17-2023.11.0
           ports:
             - containerPort: 25577
           volumeMounts:
@@ -61,7 +61,7 @@ spec:
             - name: VELOCITY_VERSION
               value: "3.2.0-SNAPSHOT"
             - name: VELOCITY_BUILD_ID
-              value: "276"
+              value: "294"
             - name: PLUGINS
               value: |
                 https://cdn.modrinth.com/data/cOj6YqJM/versions/tz9RoCFT/Ambassador-Velocity-1.4.3-beta-all.jar
