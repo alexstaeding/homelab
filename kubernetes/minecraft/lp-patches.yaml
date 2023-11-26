@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lp-patches
+  namespace: minecraft
+data:
+  lp-patch-set.json: |
+    {
+      "patches": [
+        {
+          "file": "${CFG_LP_CONFIG}",
+          "ops": [
+            {
+              "$set": {
+                "path": "$.storage-method",
+                "value": "postgresql"
+              }
+            },
+            {
+              "$set": {
+                "path": "$.data.address",
+                "value": "${CFG_LP_ADDRESS}"
+              }
+            },
+            {
+              "$set": {
+                "path": "$.data.database",
+                "value": "${CFG_LP_DATABASE}"
+              }
+            },
+            {
+              "$set": {
+                "path": "$.data.username",
+                "value": "${CFG_LP_USERNAME}"
+              }
+            },
+            {
+              "$set": {
+                "path": "$.data.password",
+                "value": "${CFG_LP_PASSWORD}"
+              }
+            }
+          ]
+        }
+      ]
+    }

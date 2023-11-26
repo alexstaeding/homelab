@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luckperms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: luckperms
+  template:
+    metadata:
+      labels:
+        app: luckperms
+    spec:
+      containers:
+        - name: lp
+          image: ghcr.io/luckperms/luckperms:v5.4.108
+          env:
+            - name: LUCKPERMS_STORAGE_METHOD
+              value: "postgresql"
+            - name: LUCKPERMS_DATA_ADDRESS
+              value: "minecraft-postgres.minecraft"
+            - name: LUCKPERMS_DATA_DATABASE
+              value: "luckperms"
+            - name: LUCKPERMS_DATA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                key: username
+            - name: LUCKPERMS_DATA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                key: password

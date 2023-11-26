@@ -39,7 +39,7 @@ spec:
               mountPath: /server
       containers:
         - name: minecraft-proxy
-          image: itzg/bungeecord:java17-2023.11.0
+          image: itzg/bungeecord:latest
           ports:
             - containerPort: 25577
           volumeMounts:
@@ -55,6 +55,8 @@ spec:
             - name: minecraft-proxy-volume
               mountPath: /server/forwarding.secret
               subPath: forwarding.secret
+            - name: lp-patches-volume
+              mountPath: /config
           env:
             - name: TYPE
               value: "VELOCITY"
@@ -64,14 +66,54 @@ spec:
               value: "294"
             - name: PLUGINS
               value: |
-                https://cdn.modrinth.com/data/cOj6YqJM/versions/tz9RoCFT/Ambassador-Velocity-1.4.3-beta-all.jar
-                https://cdn.modrinth.com/data/SSXTD3me/versions/vyOfGsar/HuskChat-Plugin-2.7.1.jar
-                https://cdn.modrinth.com/data/7IbzD4Zm/versions/XDSKb8fH/SignedVelocity-Proxy-1.2.1.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.4.3-beta/Ambassador-Velocity-1.4.3-beta-all.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.1/SignedVelocity-Proxy-1.2.1.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/anvilpowered/catalyst/catalyst-0.4.0-SNAPSHOT-all.jar
+                https://download.luckperms.net/1521/velocity/LuckPerms-Velocity-5.4.108.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
+            - name: REPLACE_ENV_VARIABLE_PREFIX
+              value: ""
+            - name: PATCH_DEFINITIONS
+              value: "/config/lp-patch-set.json"
+            - name: CFG_LP_CONFIG
+              value: "/server/plugins/luckperms/config.yml"
+            - name: CFG_LP_ADDRESS
+              value: "minecraft-postgres.minecraft"
+            - name: CFG_LP_DATABASE
+              value: "luckperms"
+            - name: CFG_LP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                key: username
+            - name: CFG_LP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                key: password
+            - name: CATALYST_DB_URL
+              value: "jdbc:postgresql://minecraft-postgres.minecraft:5432/catalyst"
+            - name: CATALYST_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: catalyst.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: CATALYST_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: catalyst.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: password
+            - name: CATALYST_DISCORD_ENABLED
+              value: "true"
+            - name: CATALYST_DISCORD_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                name: catalyst-tokens
+                key: discord-bot-token
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
@@ -79,3 +121,6 @@ spec:
         - name: secret-volume
           secret:
             secretName: minecraft-proxy-secret
+        - name: lp-patches-volume
+          configMap:
+            name: lp-patches
