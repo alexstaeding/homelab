@@ -16,6 +16,8 @@ spec:
         - name: minecraft-access
           image: filebrowser/filebrowser
           volumeMounts:
+            - name: data-volume-nexus-0
+              mountPath: /srv/servers/nexus-0
             - name: minecraft-proxy-volume
               mountPath: /srv/servers/proxy
             - name: data-volume-minecraft-lobby-0
@@ -31,6 +33,9 @@ spec:
             - name: data-volume-minecraft-e9e-0
               mountPath: /srv/servers/e9e-0
       volumes:
+        - name: data-volume-nexus-0
+          persistentVolumeClaim:
+            claimName: data-volume-nexus-0
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
             claimName: minecraft-proxy-pvc
