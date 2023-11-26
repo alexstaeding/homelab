@@ -26,7 +26,7 @@ spec:
     - metadata:
         name: data-volume
       spec:
-        accessModes: [ ReadWriteOnce ]
+        accessModes: [ ReadWriteMany ]
         storageClassName: minecraft-storage
         resources:
           requests:
