@@ -17,7 +17,7 @@ spec:
           image: filebrowser/filebrowser
           volumeMounts:
             - name: data-volume-nexus-0
-              mountPath: /srv/servers/nexus-0
+              mountPath: /srv/nexus-0
             - name: minecraft-proxy-volume
               mountPath: /srv/servers/proxy
             - name: data-volume-minecraft-lobby-0
