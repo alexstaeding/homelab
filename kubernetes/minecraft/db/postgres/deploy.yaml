@@ -2,7 +2,7 @@ apiVersion: "acid.zalan.do/v1"
 kind: postgresql
 metadata:
   name: minecraft-postgres
-  namespace: postgres-operator
+  namespace: minecraft
 spec:
   teamId: minecraft
   volume:
@@ -18,3 +18,5 @@ spec:
     luckperms: luckperms
   postgresql:
     version: "15"
+    parameters:
+      password_encryption: scram-sha-256

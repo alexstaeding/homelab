@@ -108,7 +108,7 @@ configuration:
     #   key: db-only
     #   operator: Exists
     #   effect: NoSchedule
-    # watched_namespace: ""
+    watched_namespace: "*"
   postgres_pod_resources:
     default_cpu_limit: "1"
     default_cpu_request: 100m
