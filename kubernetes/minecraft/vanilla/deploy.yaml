@@ -25,7 +25,7 @@ spec:
             - name: data-volume
               mountPath: /data
             - name: paper-patches-volume
-              mountPath: /config
+              mountPath: /config/patches
             - name: lp-patches-volume
               mountPath: /config/patches
           env:

@@ -6,31 +6,27 @@ metadata:
 data:
   paper-velocity.json: |
     {
-      "patches": [
+      "file": "/data/config/paper-global.yml",
+      "ops": [
         {
-          "file": "/data/config/paper-global.yml",
-          "ops": [
-            {
-              "$set": {
-                "path": "$.proxies.velocity.enabled",
-                "value": "${CFG_VELOCITY_ENABLED}",
-                "value-type": "bool"
-              }
-            },
-            {
-              "$set": {
-                "path": "$.proxies.velocity.online-mode",
-                "value": "true",
-                "value-type": "bool"
-              }
-            },
-            {
-              "$set": {
-                "path": "$.proxies.velocity.secret",
-                "value": "${CFG_PROXY_SECRET}"
-              }
-            }
-          ]
+          "$set": {
+            "path": "$.proxies.velocity.enabled",
+            "value": "${CFG_VELOCITY_ENABLED}",
+            "value-type": "bool"
+          }
+        },
+        {
+          "$set": {
+            "path": "$.proxies.velocity.online-mode",
+            "value": "true",
+            "value-type": "bool"
+          }
+        },
+        {
+          "$set": {
+            "path": "$.proxies.velocity.secret",
+            "value": "${CFG_PROXY_SECRET}"
+          }
         }
       ]
     }
