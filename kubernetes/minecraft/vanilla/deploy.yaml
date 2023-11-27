@@ -27,7 +27,7 @@ spec:
             - name: paper-patches-volume
               mountPath: /config
             - name: lp-patches-volume
-              mountPath: /config
+              mountPath: /config/patches
           env:
             - name: POD_NAME
               valueFrom:

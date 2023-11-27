@@ -4,7 +4,7 @@ metadata:
   name: paper-patches
   namespace: minecraft
 data:
-  patches/paper-velocity.json: |
+  paper-velocity.json: |
     {
       "patches": [
         {

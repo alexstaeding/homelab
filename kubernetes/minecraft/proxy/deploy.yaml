@@ -56,7 +56,7 @@ spec:
               mountPath: /server/forwarding.secret
               subPath: forwarding.secret
             - name: lp-patches-volume
-              mountPath: /config
+              mountPath: /config/patches
           env:
             - name: TYPE
               value: "VELOCITY"
