@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: lp-patches
+  name: lp-patches # LuckPerms patches
   namespace: minecraft
 data:
   lp.json: |

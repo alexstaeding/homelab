@@ -24,10 +24,12 @@ spec:
           volumeMounts:
             - name: data-volume
               mountPath: /data
-            - name: paper-patches-volume
-              mountPath: /config/patches
+            - name: pv-patches-volume
+              mountPath: /config/patches/pv.json
+              subPath: pv.json
             - name: lp-patches-volume
-              mountPath: /config/patches
+              mountPath: /config/patches/lp.json
+              subPath: lp.json
           env:
             - name: POD_NAME
               valueFrom:
@@ -87,9 +89,9 @@ spec:
                   name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
                   key: password
       volumes:
-        - name: paper-patches-volume
+        - name: pv-patches-volume
           configMap:
-            name: paper-patches
+            name: pv-patches
         - name: lp-patches-volume
           configMap:
             name: lp-patches

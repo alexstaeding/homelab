@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: paper-patches
+  name: pv-patches # Paper-Velocity patches
   namespace: minecraft
 data:
-  paper-velocity.json: |
+  pv.json: |
     {
       "file": "/data/config/paper-global.yml",
       "ops": [
