@@ -9,10 +9,10 @@ spec:
     size: 32Gi
   numberOfInstances: 2
   users:
-    ci:
+    teamcity:
       - login
   databases:
-    ci: ci
+    teamcity: teamcity
   postgresql:
     version: "15"
     parameters:
