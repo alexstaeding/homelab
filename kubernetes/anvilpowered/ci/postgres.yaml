@@ -1,0 +1,19 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: postgres
+  namespace: anvilpowered-ci
+spec:
+  teamId: anvilpowered-ci
+  volume:
+    size: 32Gi
+  numberOfInstances: 2
+  users:
+    ci:
+      - login
+  databases:
+    ci: ci
+  postgresql:
+    version: "15"
+    parameters:
+      password_encryption: scram-sha-256
