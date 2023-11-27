@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-agent
+  namespace: anvilpowered-ci
+spec:
+  replicas: 2  # Number of agents
+  selector:
+    matchLabels:
+      app: teamcity-agent
+  template:
+    metadata:
+      labels:
+        app: teamcity-agent
+    spec:
+      containers:
+        - name: teamcity-agent
+          image: jetbrains/teamcity-agent:2023.05.4
+          env:
+            - name: SERVER_URL
+              value: teamcity-server.anvilpowered-ci
+          volumeMounts:
+            - name: ramdisk
+              mountPath: /ramdisk
+      volumes:
+        - name: ramdisk
+          emptyDir:
+            medium: Memory
+            sizeLimit: 32Gi

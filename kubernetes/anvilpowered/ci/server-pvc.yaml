@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: server-pvc
+  namespace: anvilpowered-ci
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 32Gi
+  storageClassName: anvilpowered-ci-storage
