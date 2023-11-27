@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: minecraft-vanilla
-          image: itzg/minecraft-server:2023.11.1-java21
+          image: itzg/minecraft-server:latest # Rizky bizniz
           ports:
             - containerPort: 25565
           volumeMounts:
