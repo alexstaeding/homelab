@@ -22,10 +22,12 @@ spec:
           ports:
             - containerPort: 25565
           volumeMounts:
-            - name: paper-patches-volume
-              mountPath: /config
             - name: data-volume
               mountPath: /data
+            - name: paper-patches-volume
+              mountPath: /config
+            - name: lp-patches-volume
+              mountPath: /config
           env:
             - name: POD_NAME
               valueFrom:
@@ -38,10 +40,6 @@ spec:
                   key: secret-value
             - name: CFG_VELOCITY_ENABLED
               value: "true"
-            - name: REPLACE_ENV_VARIABLE_PREFIX
-              value: "CFG_"
-            - name: PATCH_DEFINITIONS
-              value: "/config/patch-set.json"
             - name: TYPE
               value: "PAPER"
             - name: EULA
@@ -58,18 +56,43 @@ spec:
               value: "8G"
             - name: PLUGINS
               value: |
+                https://download.luckperms.net/1521/bukkit/loader/LuckPerms-Bukkit-5.4.108.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/4.8.1/ViaVersion-4.8.1.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/4.8.1/ViaBackwards-4.8.1.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.1/SignedVelocity-Paper-1.2.1.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.4.7-DEV1.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
+            - name: REPLACE_ENV_VARIABLE_PREFIX
+              value: ""
+            - name: PATCH_DEFINITIONS
+              value: "/config/patches"
+            - name: CFG_LP_CONFIG
+              value: "/server/plugins/luckperms/config.yml"
+            - name: CFG_LP_ADDRESS
+              value: "minecraft-postgres.minecraft"
+            - name: CFG_LP_DATABASE
+              value: "luckperms"
+            - name: CFG_LP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: CFG_LP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: password
       volumes:
         - name: paper-patches-volume
           configMap:
             name: paper-patches
+        - name: lp-patches-volume
+          configMap:
+            name: lp-patches
   volumeClaimTemplates:
     - metadata:
         name: data-volume

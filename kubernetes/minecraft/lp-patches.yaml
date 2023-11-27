@@ -4,7 +4,7 @@ metadata:
   name: lp-patches
   namespace: minecraft
 data:
-  lp-patch-set.json: |
+  patches/lp.json: |
     {
       "patches": [
         {

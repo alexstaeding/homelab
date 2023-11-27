@@ -78,7 +78,7 @@ spec:
             - name: REPLACE_ENV_VARIABLE_PREFIX
               value: ""
             - name: PATCH_DEFINITIONS
-              value: "/config/lp-patch-set.json"
+              value: "/config/patches"
             - name: CFG_LP_CONFIG
               value: "/server/plugins/luckperms/config.yml"
             - name: CFG_LP_ADDRESS
