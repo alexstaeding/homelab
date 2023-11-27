@@ -19,14 +19,13 @@ spec:
           ports:
             - containerPort: 8111
           volumeMounts:
-            - name: data-volume
+            - name: server-volume
               mountPath: /data/teamcity_server/datadir
-            - name: log-volume
+              subPath: data
+            - name: server-volume
               mountPath: /opt/teamcity/logs
+              subPath: logs
       volumes:
-        - name: data-volume
+        - name: server-volume
           persistentVolumeClaim:
-            claimName: teamcity-server-data-pvc
-        - name: log-volume
-          persistentVolumeClaim:
-            claimName: teamcity-server-log-pvc
+            claimName: server-pvc
