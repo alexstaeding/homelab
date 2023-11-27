@@ -13,6 +13,8 @@ spec:
       labels:
         app: teamcity-server
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: teamcity-server
           image: jetbrains/teamcity-server:2023.05.4
