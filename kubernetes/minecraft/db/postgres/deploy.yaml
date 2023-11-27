@@ -11,10 +11,13 @@ spec:
   users:
     catalyst:
       - login
+    griefdefender:
+      - login
     luckperms:
       - login
   databases:
     catalyst: catalyst
+    griefdefender: griefdefender
     luckperms: luckperms
   postgresql:
     version: "15"
