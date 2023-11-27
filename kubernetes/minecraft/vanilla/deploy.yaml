@@ -73,7 +73,7 @@ spec:
             - name: PATCH_DEFINITIONS
               value: "/config/patches"
             - name: CFG_LP_CONFIG
-              value: "/server/plugins/luckperms/config.yml"
+              value: "/data/plugins/LuckPerms/config.yml"
             - name: CFG_LP_ADDRESS
               value: "minecraft-postgres.minecraft"
             - name: CFG_LP_DATABASE
