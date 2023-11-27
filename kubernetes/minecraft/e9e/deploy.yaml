@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: minecraft-e9e
-          image: itzg/minecraft-server:2023.11.1-java17
+          image: itzg/minecraft-server:latest
           ports:
             - containerPort: 25565
           volumeMounts:
@@ -63,7 +63,7 @@ spec:
               value: "-Dfml.readTimeout=120"
             - name: MODS
               value: |
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Proxy-Compatible-Forge/releases/download/1.1.4/proxy-compatible-forge-1.20-1.1.4.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Proxy-Compatible-Forge/releases/download/1.1.4/proxy-compatible-forge-1.19.2-1.1.4.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
