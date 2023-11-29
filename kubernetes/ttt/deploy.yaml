@@ -46,7 +46,7 @@ spec:
             - name: SERVER_NAME
               value: "My Server"
             - name: SERVER_EXECUTABLE
-              value: "./gmodserver start"
+              value: "gmodserver start"
             - name: SERVER_PASSWORD
               valueFrom:
                 secretKeyRef:
