@@ -12,9 +12,11 @@ spec:
   selector:
     statefulset.kubernetes.io/pod-name: server-0
   ports:
-    - protocol: TCP
+    - name: game-tcp
+      protocol: TCP
       port: 27015
       targetPort: 27015
-    - protocol: UDP
+    - name: game-udp
+      protocol: UDP
       port: 27015
       targetPort: 27015
