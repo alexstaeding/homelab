@@ -16,6 +16,13 @@ spec:
     spec:
       securityContext:
         fsGroup: 10000 # steam
+      initContainers:
+        - name: fix-permissions
+          image: jusito/docker-ttt:gmod_ttt_debian
+          command: [ 'sh', '-c', 'chown -R steam:steam /home/steam/serverfiles' ]
+          volumeMounts:
+            - name: data-volume
+              mountPath: /home/steam/serverfiles
       containers:
         - name: ttt-server
           image: jusito/docker-ttt:gmod_ttt_debian
