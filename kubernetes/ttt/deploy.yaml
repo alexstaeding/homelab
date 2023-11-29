@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: server
+  namespace: ttt
+spec:
+  serviceName: ttt-server
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: ttt-server
+          image: jusito/docker-ttt:gmod_ttt_debian
+          ports:
+            - containerPort: 27015
+              protocol: TCP
+            - containerPort: 27015
+              protocol: UDP
+          env:
+            - name: SERVER_PORT
+              value: "27015"
+            - name: INSTALL_CSS
+              value: "true"
+            - name: WORKSHOP_COLLECTION_ID
+              value: "2176094350"
+            - name: SERVER_NAME
+              value: "My Server"
+            - name: SERVER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: server-secret
+                  key: server-password
+            - name: SERVER_DEFAULT_MAP
+              value: "ttt_waterworld"
+            - name: SERVER_RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: server-secret
+                  key: rcon-password
+          volumeMounts:
+            - name: data-volume
+              mountPath: /home/steam/serverfiles
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        accessModes: [ ReadWriteOnce ]
+        storageClassName: ttt-storage
+        resources:
+          requests:
+            storage: 10Gi
