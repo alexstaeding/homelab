@@ -52,11 +52,6 @@ spec:
                   key: server-password
             - name: SERVER_DEFAULT_MAP
               value: "ttt_waterworld"
-            - name: SERVER_RCON_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: server-secret
-                  key: rcon-password
           volumeMounts:
             - name: data-volume
               mountPath: /home/steam/serverfiles
