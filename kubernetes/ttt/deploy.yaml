@@ -25,11 +25,17 @@ spec:
           volumeMounts:
             - name: data-volume
               mountPath: /home/steam/serverfiles
-        - name: ttt-server-install
+      containers:
+        - name: ttt-server
           image: jusito/docker-ttt:gmod_ttt_debian
           securityContext:
             runAsUser: 10000
             runAsGroup: 10000
+          ports:
+            - containerPort: 27015
+              protocol: TCP
+            - containerPort: 27015
+              protocol: UDP
           env:
             - name: SERVER_PORT
               value: "27015"
@@ -51,21 +57,6 @@ spec:
                 secretKeyRef:
                   name: server-secret
                   key: rcon-password
-          volumeMounts:
-            - name: data-volume
-              mountPath: /home/steam/serverfiles
-      containers:
-        - name: ttt-server
-          image: jusito/docker-ttt:gmod_ttt_debian
-          command: [ "./gmodserver", "start" ]
-          securityContext:
-            runAsUser: 10000
-            runAsGroup: 10000
-          ports:
-            - containerPort: 27015
-              protocol: TCP
-            - containerPort: 27015
-              protocol: UDP
           volumeMounts:
             - name: data-volume
               mountPath: /home/steam/serverfiles
