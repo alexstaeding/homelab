@@ -5,7 +5,7 @@ metadata:
   namespace: ttt
   annotations:
     metallb.universe.tf/address-pool: address-pool
-    metallb.universe.tf/loadBalancerIPs: 10.0.10.2
+    metallb.universe.tf/loadBalancerIPs: 10.0.10.10
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
