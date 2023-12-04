@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ttt-server
-          image: nexus-0.nexus.cluster-repository.svc.cluster.local:9000/jusito/docker-ttt:latest
+          image: images.sourcegrade.org/jusito/docker-ttt:latest
           ports:
             - containerPort: 27015
               protocol: TCP
