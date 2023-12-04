@@ -23,6 +23,7 @@ spec:
             runAsUser: 200  # User ID
           ports:
             - containerPort: 8081
+            - containerPort: 9000
           volumeMounts:
             - name: data-volume
               mountPath: /nexus-data
