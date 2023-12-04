@@ -7,3 +7,12 @@ spec:
   clusterIP: None
   selector:
     app: nexus
+  ports:
+    - name: web
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+    - name: docker-images
+      protocol: TCP
+      port: 9000
+      targetPort: 9000
