@@ -19,7 +19,7 @@ spec:
           image: jetbrains/teamcity-agent:2023.11
           volumeMounts:
             - name: ramdisk
-              mountPath: /
+              mountPath: /home/buildagent
             - name: config-volume
               mountPath: /opt/buildagent
           env:
