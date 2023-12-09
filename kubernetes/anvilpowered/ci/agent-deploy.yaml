@@ -14,6 +14,15 @@ spec:
       labels:
         app: teamcity-agent
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
       securityContext:
         fsGroup: 1000
       containers:
