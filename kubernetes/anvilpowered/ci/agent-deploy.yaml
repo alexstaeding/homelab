@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: teamcity-agent
-          image: jetbrains/teamcity-agent:2023.05.4
+          image: jetbrains/teamcity-agent:2023.11
           env:
             - name: SERVER_URL
               value: teamcity-server.anvilpowered-ci
