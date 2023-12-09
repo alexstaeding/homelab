@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nexus
+  namespace: anvilpowered-nexus
+spec:
+  serviceName: nexus
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nexus
+  template:
+    metadata:
+      labels:
+        app: nexus
+    spec:
+      securityContext:
+        fsGroup: 200  # Group ID for volume
+      containers:
+        - name: nexus
+          image: sonatype/nexus3:3.62.0
+          securityContext:
+            runAsUser: 200  # User ID
+          ports:
+            - containerPort: 8081
+            - containerPort: 9000
+          volumeMounts:
+            - name: data-volume
+              mountPath: /nexus-data
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        accessModes: [ ReadWriteMany ]
+        storageClassName: anvilpowered-nexus-storage
+        resources:
+          requests:
+            storage: 128Gi
