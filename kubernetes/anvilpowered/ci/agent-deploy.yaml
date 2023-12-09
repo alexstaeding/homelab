@@ -14,14 +14,16 @@ spec:
       labels:
         app: teamcity-agent
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
         - name: teamcity-agent
           image: jetbrains/teamcity-agent:2023.11
           volumeMounts:
             - name: ramdisk
-              mountPath: /home/buildagent
+              mountPath: /opt/buildagent/work
             - name: config-volume
-              mountPath: /opt/buildagent
+              mountPath: /opt/buildagent/conf
           env:
             - name: AGENT_NAME
               valueFrom:
