@@ -5,7 +5,7 @@ metadata:
   namespace: anvilpowered-ci
 spec:
   serviceName: teamcity-agent
-  replicas: 2  # Number of agents
+  replicas: 3  # Number of agents
   selector:
     matchLabels:
       app: teamcity-agent
@@ -23,7 +23,7 @@ spec:
             - name: ramdisk
               mountPath: /opt/buildagent/work
             - name: config-volume
-              mountPath: /opt/buildagent/conf
+              mountPath: /data/teamcity_agent/conf
           env:
             - name: AGENT_NAME
               valueFrom:
