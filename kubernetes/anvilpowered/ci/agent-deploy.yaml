@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: teamcity-agent
   namespace: anvilpowered-ci
 spec:
+  serviceName: teamcity-agent
   replicas: 2  # Number of agents
   selector:
     matchLabels:
@@ -16,14 +17,29 @@ spec:
       containers:
         - name: teamcity-agent
           image: jetbrains/teamcity-agent:2023.11
-          env:
-            - name: SERVER_URL
-              value: teamcity-server.anvilpowered-ci
           volumeMounts:
             - name: ramdisk
-              mountPath: /ramdisk
+              mountPath: /
+            - name: config-volume
+              mountPath: /opt/buildagent
+          env:
+            - name: AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: SERVER_URL
+              value: teamcity-server.anvilpowered-ci
       volumes:
         - name: ramdisk
           emptyDir:
             medium: Memory
             sizeLimit: 32Gi
+  volumeClaimTemplates:
+    - metadata:
+        name: config-volume
+      spec:
+        accessModes: [ ReadWriteOnce ]
+        storageClassName: anvilpowered-ci-storage
+        resources:
+          requests:
+            storage: 4Gi
