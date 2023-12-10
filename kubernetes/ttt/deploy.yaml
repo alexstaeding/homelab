@@ -28,7 +28,7 @@ spec:
             - name: INSTALL_CSS
               value: "true"
             - name: WORKSHOP_COLLECTION_ID
-              value: "2176094350"
+              value: "2061870598"
             - name: SERVER_NAME
               value: "My Server"
             - name: SERVER_PASSWORD
