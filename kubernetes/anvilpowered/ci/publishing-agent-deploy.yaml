@@ -48,6 +48,21 @@ spec:
                 secretKeyRef:
                   name: publish
                   key: sonatype-password
+            - name: SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: publish
+                  key: signing-key
+            - name: SIGNING_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: publish
+                  key: signing-key-id
+            - name: SIGNING_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: publish
+                  key: signing-password
             - name: SERVER_URL
               value: teamcity-server.anvilpowered-ci
       volumes:
