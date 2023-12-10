@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: teamcity-publishing-agent
+  namespace: anvilpowered-ci
+spec:
+  serviceName: teamcity-publishing-agent
+  replicas: 1  # Number of agents
+  selector:
+    matchLabels:
+      app:  teamcity-publishing-agent
+  template:
+    metadata:
+      labels:
+        app:  teamcity-publishing-agent
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name:  teamcity-publishing-agent
+          image: jetbrains/teamcity-agent:2023.11
+          volumeMounts:
+            - name: ramdisk
+              mountPath: /opt/buildagent/work
+            - name: config-volume
+              mountPath: /data/teamcity_agent/conf
+          env:
+            - name: AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: SERVER_URL
+              value: teamcity-server.anvilpowered-ci
+      volumes:
+        - name: ramdisk
+          emptyDir:
+            medium: Memory
+            sizeLimit: 32Gi
+  volumeClaimTemplates:
+    - metadata:
+        name: config-volume
+      spec:
+        accessModes: [ ReadWriteOnce ]
+        storageClassName: anvilpowered-ci-storage
+        resources:
+          requests:
+            storage: 4Gi
