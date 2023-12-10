@@ -8,11 +8,11 @@ spec:
   replicas: 1  # Number of agents
   selector:
     matchLabels:
-      app:  teamcity-publishing-agent
+      app: teamcity-publishing-agent
   template:
     metadata:
       labels:
-        app:  teamcity-publishing-agent
+        app: teamcity-publishing-agent
     spec:
       affinity:
         nodeAffinity:
@@ -26,7 +26,7 @@ spec:
       securityContext:
         fsGroup: 1000
       containers:
-        - name:  teamcity-publishing-agent
+        - name: teamcity-publishing-agent
           image: jetbrains/teamcity-agent:2023.11
           volumeMounts:
             - name: ramdisk
@@ -38,6 +38,16 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: SONATYPE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: publish
+                  key: sonatype-username
+            - name: SONATYPE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: publish
+                  key: sonatype-password
             - name: SERVER_URL
               value: teamcity-server.anvilpowered-ci
       volumes:
