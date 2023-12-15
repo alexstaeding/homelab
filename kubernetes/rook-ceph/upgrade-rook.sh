@@ -80,20 +80,22 @@ sed -i '' -e "s|image: rook/ceph:.*|image: rook/ceph:${VERSION}|" operator.yaml
 # Fetch the new YAML files
 COMMON_URL="https://raw.githubusercontent.com/rook/rook/${VERSION}/deploy/examples/common.yaml"
 CRDS_URL="https://raw.githubusercontent.com/rook/rook/${VERSION}/deploy/examples/crds.yaml"
+TOOLBOX_URL="https://raw.githubusercontent.com/rook/rook/${VERSION}/deploy/examples/toolbox.yaml"
 
 wget -q --show-progress -O common.yaml $COMMON_URL
 wget -q --show-progress -O crds.yaml $CRDS_URL
+wget -q --show-progress -O toolbox.yaml $TOOLBOX_URL
 
 # Update rook-version.txt
 echo $VERSION > rook-version.txt
 
 # Suggest to create a Git commit
-echo "Files common.yaml, crds.yaml, and operator.yaml have been updated to version ${VERSION}."
+echo "Files common.yaml, crds.yaml, toolbox.yaml and operator.yaml have been updated to version ${VERSION}."
 echo "rook-version.txt has been updated to version ${VERSION}."
 read -p "Would you like to create a Git commit for these changes? (y/n): " choice
 
 case "$choice" in
-  y|Y ) git add common.yaml crds.yaml operator.yaml rook-version.txt
+  y|Y ) git add common.yaml crds.yaml toolbox.yaml operator.yaml rook-version.txt
         git commit -m "Upgrade rook to version ${VERSION}"
         ;;
   n|N ) printf "\e[33mSkipping Git commit. You can manually commit the changes later.\e[0m"
