@@ -20,7 +20,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: rook-ceph-tools
-          image: quay.io/ceph/ceph:v17.2.6
+          image: quay.io/ceph/ceph:v18.2.0
           command:
             - /bin/bash
             - -c
@@ -93,6 +93,8 @@ spec:
             runAsNonRoot: true
             runAsUser: 2016
             runAsGroup: 2016
+            capabilities:
+              drop: ["ALL"]
           env:
             - name: ROOK_CEPH_USERNAME
               valueFrom:
