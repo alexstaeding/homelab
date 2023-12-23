@@ -62,9 +62,9 @@ spec:
             - name: TYPE
               value: "VELOCITY"
             - name: VELOCITY_VERSION
-              value: "3.2.0-SNAPSHOT"
+              value: "3.3.0-SNAPSHOT"
             - name: VELOCITY_BUILD_ID
-              value: "294"
+              value: "309"
             - name: PLUGINS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.4.3-beta/Ambassador-Velocity-1.4.3-beta-all.jar
