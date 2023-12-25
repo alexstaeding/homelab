@@ -7,7 +7,6 @@ spec:
   teamId: minecraft
   volume:
     size: 32Gi
-    storageClass: minecraft-db-storage
   numberOfInstances: 2
   users:
     catalyst:
