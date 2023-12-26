@@ -66,7 +66,7 @@ spec:
             - name: MODS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Proxy-Compatible-Forge/releases/download/1.1.4/proxy-compatible-forge-1.20-1.1.4.jar
-                https://download.luckperms.net/1521/forge/loader/LuckPerms-Forge-5.4.113.jar
+                https://download.luckperms.net/1526/forge/loader/LuckPerms-Forge-5.4.113.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
