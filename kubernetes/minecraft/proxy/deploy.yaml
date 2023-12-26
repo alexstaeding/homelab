@@ -68,9 +68,9 @@ spec:
             - name: PLUGINS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.4.3-beta/Ambassador-Velocity-1.4.3-beta-all.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.1/SignedVelocity-Proxy-1.2.1.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.2/SignedVelocity-Proxy-1.2.2.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/anvilpowered/catalyst/catalyst-0.4.0-SNAPSHOT-all.jar
-                https://download.luckperms.net/1521/velocity/LuckPerms-Velocity-5.4.108.jar
+                https://download.luckperms.net/1521/velocity/LuckPerms-Velocity-5.4.113.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
