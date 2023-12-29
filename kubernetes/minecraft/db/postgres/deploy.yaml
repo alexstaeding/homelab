@@ -22,4 +22,5 @@ spec:
   postgresql:
     version: "15"
     parameters:
+      max_connections: "1024"
       password_encryption: scram-sha-256
