@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:2023.10.0
+          image: cloudflare/cloudflared:2024.1.2
           imagePullPolicy: Always
           args: [ "tunnel", "--no-autoupdate", "run", "--token=$(TOKEN)" ]
           env:
