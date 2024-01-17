@@ -144,7 +144,7 @@ spec:
                     ],
                     "alwaysVisible": true,
                     "passthrough": false,
-                    "discordChannelId": "123456789"
+                    "discordChannelId": "1197313444395880558"
                   }
                 }
       volumes:
