@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-server
+  namespace: sourcegrade-ci
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: teamcity-server
+          image: jetbrains/teamcity-server:2023.11.2
+          ports:
+            - containerPort: 8111
+          volumeMounts:
+            - name: server-volume
+              mountPath: /data/teamcity_server/datadir
+              subPath: data
+            - name: server-volume
+              mountPath: /opt/teamcity/logs
+              subPath: logs
+      volumes:
+        - name: server-volume
+          persistentVolumeClaim:
+            claimName: server-pvc

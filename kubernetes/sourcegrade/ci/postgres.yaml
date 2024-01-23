@@ -1,0 +1,19 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: sourcegrade-ci-postgres
+  namespace: sourcegrade-ci
+spec:
+  teamId: sourcegrade-ci
+  volume:
+    size: 32Gi
+  numberOfInstances: 2
+  users:
+    teamcity:
+      - login
+  databases:
+    teamcity: teamcity
+  postgresql:
+    version: "15"
+    parameters:
+      password_encryption: scram-sha-256
