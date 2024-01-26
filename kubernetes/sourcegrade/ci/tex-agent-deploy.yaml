@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: teamcity-tex-agent
+  namespace: sourcegrade-ci
+spec:
+  serviceName: teamcity-tex-agent
+  replicas: 1  # Number of agents
+  selector:
+    matchLabels:
+      app: teamcity-tex-agent
+  template:
+    metadata:
+      labels:
+        app: teamcity-tex-agent
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: teamcity-tex-agent
+          image: images.sourcegrade.org/tudalgo/teamcity-agent-algotex:2023.11.2
+          volumeMounts:
+            - name: ramdisk
+              mountPath: /opt/buildagent/work
+            - name: config-volume
+              mountPath: /data/teamcity_agent/conf
+          env:
+            - name: AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: SERVER_URL
+              value: teamcity-server.sourcegrade-ci
+      volumes:
+        - name: ramdisk
+          emptyDir:
+            medium: Memory
+            sizeLimit: 32Gi
+  volumeClaimTemplates:
+    - metadata:
+        name: config-volume
+      spec:
+        accessModes: [ ReadWriteOnce ]
+        storageClassName: sourcegrade-ci-storage
+        resources:
+          requests:
+            storage: 4Gi
