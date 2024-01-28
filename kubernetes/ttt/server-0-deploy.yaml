@@ -1,10 +1,9 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: server
   namespace: ttt
 spec:
-  serviceName: ttt-server
   replicas: 1
   selector:
     matchLabels:
