@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-1
+  namespace: ttt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-1
+  template:
+    metadata:
+      labels:
+        app: server-1
+    spec:
+      containers:
+        - name: ttt-server
+          image: images.sourcegrade.org/jusito/docker-ttt:2024.1
+          ports:
+            - containerPort: 27016
+              protocol: TCP
+            - containerPort: 27016
+              protocol: UDP
+          env:
+            - name: SERVER_PORT
+              value: "27016"
+            - name: INSTALL_CSS
+              value: "true"
+            - name: WORKSHOP_COLLECTION_ID
+              value: "2061870598"
+            - name: SERVER_NAME
+              value: "GeekHub TTT"
+            - name: SERVER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: server-secret
+                  key: server-password
+            - name: SERVER_DEFAULT_MAP
+              value: "ttt_waterworld"
