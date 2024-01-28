@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ttt-server
-          image: images.sourcegrade.org/jusito/docker-ttt:latest
+          image: images.sourcegrade.org/jusito/docker-ttt:2024.1
           ports:
             - containerPort: 27015
               protocol: TCP
