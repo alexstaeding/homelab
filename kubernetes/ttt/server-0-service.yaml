@@ -10,7 +10,7 @@ spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   selector:
-    statefulset.kubernetes.io/pod-name: server-0
+    app: server-0
   ports:
     - name: game-tcp
       protocol: TCP
