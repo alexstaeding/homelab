@@ -27,7 +27,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: teamcity-publishing-agent
-          image: jetbrains/teamcity-agent:2023.11.2
+          image: jetbrains/teamcity-agent:2023.11.3
           volumeMounts:
             - name: ramdisk
               mountPath: /opt/buildagent/work
