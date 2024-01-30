@@ -17,7 +17,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: teamcity-server
-          image: jetbrains/teamcity-server:2023.11.2
+          image: jetbrains/teamcity-server:2023.11.3
           ports:
             - containerPort: 8111
           volumeMounts:
