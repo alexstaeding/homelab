@@ -64,13 +64,13 @@ spec:
             - name: VELOCITY_VERSION
               value: "3.3.0-SNAPSHOT"
             - name: VELOCITY_BUILD_ID
-              value: "320"
+              value: "346"
             - name: PLUGINS
               value: |
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.4.3-beta/Ambassador-Velocity-1.4.3-beta-all.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.5.0-rc1-beta/Ambassador-Velocity-1.5.0-rc1-all.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Proxy-1.2.3.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/anvilpowered/catalyst/catalyst-0.4.0-SNAPSHOT-all.jar
-                https://download.luckperms.net/1529/velocity/LuckPerms-Velocity-5.4.116.jar
+                https://download.luckperms.net/1530/velocity/LuckPerms-Velocity-5.4.117.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
