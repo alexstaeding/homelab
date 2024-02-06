@@ -35,7 +35,7 @@ spec:
             - name: CONDUIT_ALLOW_FEDERATION
               value: "true"
             - name: CONDUIT_MAX_REQUEST_SIZE
-              value: "20_000_000"
+              value: "20000000"
             - name: CONDUIT_TRUSTED_SERVERS
               value: "[\"matrix.org\"]"
             - name: CONDUIT_MAX_CONCURRENT_REQUESTS
