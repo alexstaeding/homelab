@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: ingress
+  name: ingress
+  namespace: staeding-matrix
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: staeding.org
+      http:
+        paths:
+          - path: /.well-known/matrix/server
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: well-known-server-service
+                port:
+                  number: 80
+    - host: matrix.staeding.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: conduit
+                port:
+                  number: 8448
+  tls:
+    - hosts:
+        - matrix.staeding.org
+      secretName: staeding-matrix

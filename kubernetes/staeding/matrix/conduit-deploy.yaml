@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conduit
+  namespace: staeding-matrix
+  labels:
+    app: conduit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conduit
+  template:
+    metadata:
+      labels:
+        app: conduit
+    spec:
+      containers:
+        - name: conduit
+          image: registry.gitlab.com/famedly/conduit/matrix-conduit:latest
+          ports:
+            - containerPort: 8448
+          volumeMounts:
+            - name: conduit-db
+              mountPath: /var/lib/matrix-conduit/
+          env:
+            - name: CONDUIT_SERVER_NAME
+              value: "staeding.com"
+            - name: CONDUIT_DATABASE_BACKEND
+              value: "rookdb"
+            - name: CONDUIT_PORT
+              value: "8448"
+            - name: CONDUIT_ALLOW_REGISTRATION
+              value: "true"
+            - name: CONDUIT_ALLOW_FEDERATION
+              value: "true"
+            - name: CONDUIT_MAX_REQUEST_SIZE
+              value: "20_000_000"
+            - name: CONDUIT_TRUSTED_SERVERS
+              value: "[\"matrix.org\"]"
+            - name: CONDUIT_MAX_CONCURRENT_REQUESTS
+              value: "100"
+            - name: CONDUIT_LOG
+              value: "warn,rocket=off,_=off,sled=off"
+            - name: CONDUIT_CONFIG
+              value: ""
+      volumes:
+        - name: conduit-db
+          persistentVolumeClaim:
+            claimName: conduit-db-pvc
