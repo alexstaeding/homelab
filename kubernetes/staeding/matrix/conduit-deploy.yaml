@@ -36,7 +36,7 @@ spec:
             - name: CONDUIT_PORT
               value: "8448"
             - name: CONDUIT_ALLOW_REGISTRATION
-              value: "true"
+              value: "false"
             - name: CONDUIT_ALLOW_FEDERATION
               value: "true"
             - name: CONDUIT_MAX_REQUEST_SIZE
