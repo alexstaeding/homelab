@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-    - host: staeding.org
+    - host: staeding.com
       http:
         paths:
           - path: /.well-known/matrix/server
@@ -19,7 +19,7 @@ spec:
                 name: well-known-server-service
                 port:
                   number: 80
-    - host: matrix.staeding.org
+    - host: matrix.staeding.com
       http:
         paths:
           - path: /
@@ -31,5 +31,5 @@ spec:
                   number: 8448
   tls:
     - hosts:
-        - matrix.staeding.org
+        - matrix.staeding.com
       secretName: staeding-matrix
