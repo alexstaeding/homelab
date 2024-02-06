@@ -15,9 +15,14 @@ spec:
       labels:
         app: conduit
     spec:
+      securityContext:
+        fsGroup: 200
       containers:
         - name: conduit
           image: registry.gitlab.com/famedly/conduit/matrix-conduit:latest
+          securityContext:
+            runAsUser: 200
+            runAsGroup: 200
           ports:
             - containerPort: 8448
           volumeMounts:
