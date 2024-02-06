@@ -27,7 +27,7 @@ spec:
             - name: CONDUIT_SERVER_NAME
               value: "staeding.com"
             - name: CONDUIT_DATABASE_BACKEND
-              value: "rookdb"
+              value: "rocksdb"
             - name: CONDUIT_PORT
               value: "8448"
             - name: CONDUIT_ALLOW_REGISTRATION
