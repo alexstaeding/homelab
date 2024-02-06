@@ -35,7 +35,7 @@ spec:
       volumes:
         - name: well-known
           configMap:
-            name: matrix-well-known-config
+            name: well-known
             items:
               - key: matrix.server
                 path: server
