@@ -13,10 +13,10 @@ spec:
       http:
         paths:
           - path: /.well-known/matrix/server
-            pathType: ImplementationSpecific
+            pathType: Exact
             backend:
               service:
-                name: well-known-server-service
+                name: well-known
                 port:
                   number: 80
     - host: matrix.staeding.com
