@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: coturn
+  namespace: staeding-matrix
+  annotations:
+    metallb.universe.tf/address-pool: address-pool
+    metallb.universe.tf/loadBalancerIPs: 10.0.10.9
+spec:
+  type: LoadBalancer
+  selector:
+    app: coturn
+  ports:
+    - name: turn-3478-udp
+      port: 3478
+      targetPort: 3478
+      protocol: UDP
+    - name: turn-3478-tcp
+      port: 3478
+      targetPort: 3478
+      protocol: TCP
+    - name: turn-5349-udp
+      port: 5349
+      targetPort: 5349
+      protocol: UDP
+    - name: turn-5349-tcp
+      port: 5349
+      targetPort: 5349
+      protocol: TCP
+    # Gory hell https://github.com/kubernetes/kubernetes/issues/23864
+    - name: turn-49160
+      port: 49160
+      targetPort: 49160
+      protocol: UDP
+    - name: turn-49161
+      port: 49161
+      targetPort: 49161
+      protocol: UDP
+    - name: turn-49162
+      port: 49162
+      targetPort: 49162
+      protocol: UDP
+    - name: turn-49163
+      port: 49163
+      targetPort: 49163
+      protocol: UDP
+    - name: turn-49164
+      port: 49164
+      targetPort: 49164
+      protocol: UDP
+    - name: turn-49165
+      port: 49165
+      targetPort: 49165
+      protocol: UDP
+    - name: turn-49166
+      port: 49166
+      targetPort: 49166
+      protocol: UDP
+    - name: turn-49167
+      port: 49167
+      targetPort: 49167
+      protocol: UDP
+    - name: turn-49168
+      port: 49168
+      targetPort: 49168
+      protocol: UDP
+    - name: turn-49169
+      port: 49169
+      targetPort: 49169
+      protocol: UDP
+    - name: turn-49170
+      port: 49170
+      targetPort: 49170
+      protocol: UDP
+    - name: turn-49171
+      port: 49171
+      targetPort: 49171
+      protocol: UDP
+    - name: turn-49172
+      port: 49172
+      targetPort: 49173
+      protocol: UDP
+    - name: turn-49174
+      port: 49174
+      targetPort: 49174
+      protocol: UDP
+    - name: turn-49175
+      port: 49175
+      targetPort: 49175
+      protocol: UDP
+    - name: turn-49176
+      port: 49176
+      targetPort: 49176
+      protocol: UDP
+    - name: turn-49177
+      port: 49177
+      targetPort: 49177
+      protocol: UDP
+    - name: turn-4918
+      port: 49178
+      targetPort: 49178
+      protocol: UDP
+    - name: turn-49179
+      port: 49179
+      targetPort: 49179
+      protocol: UDP

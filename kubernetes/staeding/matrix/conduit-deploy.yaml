@@ -47,6 +47,13 @@ spec:
               value: "100"
             - name: CONDUIT_LOG
               value: "warn,rocket=off,_=off,sled=off"
+            - name: CONDUIT_TURN_URIS
+              value: "[\"turn:staeding.com?transport=udp\", \"turn:staeding.com?transport=tcp\"]"
+            - name: CONDUIT_TURN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: turn-secret
+                  key: secret
             - name: CONDUIT_CONFIG
               value: ""
       volumes:

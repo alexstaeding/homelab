@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coturn
+  namespace: staeding-matrix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coturn
+  template:
+    metadata:
+      labels:
+        app: coturn
+    spec:
+      containers:
+        - name: coturn
+          image: coturn/coturn:4.6.2
+          args: [
+            "--use-auth-secret",
+            "--realm=matrix.staeding.com",
+            "--static-auth-secret=$(TURN_SECRET)",
+            "--min-port=49160",
+            "--max-port-49179"
+          ]
+          env:
+            - name: TURN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: turn-secret
+                  key: secret
+          ports:
+            - name: turn-3478-udp
+              containerPort: 3478
+              protocol: UDP
+            - name: turn-3478-tcp
+              containerPort: 3478
+              protocol: TCP
+            - name: turn-5349-udp
+              containerPort: 5349
+              protocol: UDP
+            - name: turn-5349-tcp
+              containerPort: 5349
+              protocol: TCP
+            # 49160-49179 https://github.com/kubernetes/kubernetes/issues/23864
