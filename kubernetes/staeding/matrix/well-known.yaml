@@ -8,6 +8,15 @@ data:
     {
       "m.server": "matrix.staeding.com:443"
     }
+  matrix.client: |
+    {
+      "m.homeserver": {
+        "base_url": "https://staeding.com"
+      },
+      "org.matrix.msc3575.proxy": {
+        "url": "https://matrix.staeding.com"
+      }
+    }
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -39,6 +48,8 @@ spec:
             items:
               - key: matrix.server
                 path: server
+              - key: matrix.client
+                path: client
 ---
 apiVersion: v1
 kind: Service
