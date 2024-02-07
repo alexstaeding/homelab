@@ -21,7 +21,7 @@ spec:
             "--realm=matrix.staeding.com",
             "--static-auth-secret=$(TURN_SECRET)",
             "--min-port=49160",
-            "--max-port-49179"
+            "--max-port=49179"
           ]
           env:
             - name: TURN_SECRET
