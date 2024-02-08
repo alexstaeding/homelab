@@ -68,6 +68,7 @@ spec:
       port: 49169
       targetPort: 49169
       protocol: UDP
+
     - name: turn-49170
       port: 49170
       targetPort: 49170
@@ -103,4 +104,238 @@ spec:
     - name: turn-49179
       port: 49179
       targetPort: 49179
+      protocol: UDP
+
+    - name: turn-49180
+      port: 49180
+      targetPort: 49180
+      protocol: UDP
+    - name: turn-49181
+      port: 49181
+      targetPort: 49181
+      protocol: UDP
+    - name: turn-49182
+      port: 49182
+      targetPort: 49182
+      protocol: UDP
+    - name: turn-49183
+      port: 49183
+      targetPort: 49183
+      protocol: UDP
+    - name: turn-49184
+      port: 49184
+      targetPort: 49184
+      protocol: UDP
+    - name: turn-49185
+      port: 49185
+      targetPort: 49185
+      protocol: UDP
+    - name: turn-49186
+      port: 49186
+      targetPort: 49186
+      protocol: UDP
+    - name: turn-49187
+      port: 49187
+      targetPort: 49187
+      protocol: UDP
+    - name: turn-49188
+      port: 49188
+      targetPort: 49188
+      protocol: UDP
+    - name: turn-49189
+      port: 49189
+      targetPort: 49189
+      protocol: UDP
+
+    - name: turn-49190
+      port: 49190
+      targetPort: 49190
+      protocol: UDP
+    - name: turn-49191
+      port: 49191
+      targetPort: 49191
+      protocol: UDP
+    - name: turn-49192
+      port: 49192
+      targetPort: 49193
+      protocol: UDP
+    - name: turn-49194
+      port: 49194
+      targetPort: 49194
+      protocol: UDP
+    - name: turn-49195
+      port: 49195
+      targetPort: 49195
+      protocol: UDP
+    - name: turn-49196
+      port: 49196
+      targetPort: 49196
+      protocol: UDP
+    - name: turn-49197
+      port: 49197
+      targetPort: 49197
+      protocol: UDP
+    - name: turn-4918
+      port: 49198
+      targetPort: 49198
+      protocol: UDP
+    - name: turn-49199
+      port: 49199
+      targetPort: 49199
+      protocol: UDP
+
+    - name: turn-49200
+      port: 49200
+      targetPort: 49200
+      protocol: UDP
+    - name: turn-49201
+      port: 49201
+      targetPort: 49201
+      protocol: UDP
+    - name: turn-49202
+      port: 49202
+      targetPort: 49202
+      protocol: UDP
+    - name: turn-49203
+      port: 49203
+      targetPort: 49203
+      protocol: UDP
+    - name: turn-49204
+      port: 49204
+      targetPort: 49204
+      protocol: UDP
+    - name: turn-49205
+      port: 49205
+      targetPort: 49205
+      protocol: UDP
+    - name: turn-49206
+      port: 49206
+      targetPort: 49206
+      protocol: UDP
+    - name: turn-49207
+      port: 49207
+      targetPort: 49207
+      protocol: UDP
+    - name: turn-49208
+      port: 49208
+      targetPort: 49208
+      protocol: UDP
+    - name: turn-49209
+      port: 49209
+      targetPort: 49209
+      protocol: UDP
+
+    - name: turn-49210
+      port: 49210
+      targetPort: 49210
+      protocol: UDP
+    - name: turn-49211
+      port: 49211
+      targetPort: 49211
+      protocol: UDP
+    - name: turn-49212
+      port: 49212
+      targetPort: 49213
+      protocol: UDP
+    - name: turn-49214
+      port: 49214
+      targetPort: 49214
+      protocol: UDP
+    - name: turn-49215
+      port: 49215
+      targetPort: 49215
+      protocol: UDP
+    - name: turn-49216
+      port: 49216
+      targetPort: 49216
+      protocol: UDP
+    - name: turn-49217
+      port: 49217
+      targetPort: 49217
+      protocol: UDP
+    - name: turn-4922
+      port: 49218
+      targetPort: 49218
+      protocol: UDP
+    - name: turn-49219
+      port: 49219
+      targetPort: 49219
+      protocol: UDP
+
+    - name: turn-49220
+      port: 49220
+      targetPort: 49220
+      protocol: UDP
+    - name: turn-49221
+      port: 49221
+      targetPort: 49221
+      protocol: UDP
+    - name: turn-49222
+      port: 49222
+      targetPort: 49222
+      protocol: UDP
+    - name: turn-49223
+      port: 49223
+      targetPort: 49223
+      protocol: UDP
+    - name: turn-49224
+      port: 49224
+      targetPort: 49224
+      protocol: UDP
+    - name: turn-49225
+      port: 49225
+      targetPort: 49225
+      protocol: UDP
+    - name: turn-49226
+      port: 49226
+      targetPort: 49226
+      protocol: UDP
+    - name: turn-49227
+      port: 49227
+      targetPort: 49227
+      protocol: UDP
+    - name: turn-49228
+      port: 49228
+      targetPort: 49228
+      protocol: UDP
+    - name: turn-49229
+      port: 49229
+      targetPort: 49229
+      protocol: UDP
+
+    - name: turn-49230
+      port: 49230
+      targetPort: 49230
+      protocol: UDP
+    - name: turn-49231
+      port: 49231
+      targetPort: 49231
+      protocol: UDP
+    - name: turn-49232
+      port: 49232
+      targetPort: 49233
+      protocol: UDP
+    - name: turn-49234
+      port: 49234
+      targetPort: 49234
+      protocol: UDP
+    - name: turn-49235
+      port: 49235
+      targetPort: 49235
+      protocol: UDP
+    - name: turn-49236
+      port: 49236
+      targetPort: 49236
+      protocol: UDP
+    - name: turn-49237
+      port: 49237
+      targetPort: 49237
+      protocol: UDP
+    - name: turn-4922
+      port: 49238
+      targetPort: 49238
+      protocol: UDP
+    - name: turn-49239
+      port: 49239
+      targetPort: 49239
       protocol: UDP
