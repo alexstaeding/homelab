@@ -18,7 +18,7 @@ spec:
         fsGroup: 200  # Group ID for volume
       containers:
         - name: nexus
-          image: sonatype/nexus3:3.64.0
+          image: sonatype/nexus3:3.65.0
           securityContext:
             runAsUser: 200  # User ID
           ports:
