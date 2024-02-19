@@ -60,7 +60,7 @@ spec:
               value: "8G"
             - name: PLUGINS
               value: |
-                https://download.luckperms.net/1529/bukkit/loader/LuckPerms-Bukkit-5.4.116.jar
+                https://download.luckperms.net/1532/bukkit/loader/LuckPerms-Bukkit-5.4.119.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/4.9.2/ViaVersion-4.9.2.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/4.9.1/ViaBackwards-4.9.1.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Paper-1.2.3.jar
