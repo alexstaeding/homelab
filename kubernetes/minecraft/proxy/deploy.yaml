@@ -108,9 +108,9 @@ spec:
                 secretKeyRef:
                   name: catalyst.minecraft-postgres.credentials.postgresql.acid.zalan.do
                   key: password
-            - name: CATALYST_DISCORD_ENABLED
+            - name: CATALYST_CHAT_DISCORD_ENABLED
               value: "true"
-            - name: CATALYST_DISCORD_BOT_TOKEN
+            - name: CATALYST_CHAT_DISCORD_BOT_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: catalyst-tokens
