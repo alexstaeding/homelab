@@ -50,10 +50,10 @@ spec:
               mountPath: /server/plugins
               subPath: plugins
             - name: velocity-config-volume
-              mountPath: /server/velocity.toml
+              mountPath: /config/velocity.toml
               subPath: velocity.toml
-            - name: minecraft-proxy-volume
-              mountPath: /server/forwarding.secret
+            - name: proxy-secret-volume
+              mountPath: /config/forwarding.secret
               subPath: forwarding.secret
             - name: lp-patches-volume
               mountPath: /config/patches/lp.json
@@ -154,6 +154,9 @@ spec:
         - name: velocity-config-volume
           configMap:
             name: velocity-config
+        - name: proxy-secret-volume
+          configMap:
+            name: minecraft-proxy-secret
         - name: lp-patches-volume
           configMap:
             name: lp-patches
