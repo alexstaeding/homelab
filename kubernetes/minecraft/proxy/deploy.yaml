@@ -49,7 +49,7 @@ spec:
             - name: minecraft-proxy-volume
               mountPath: /server/plugins
               subPath: plugins
-            - name: minecraft-proxy-volume
+            - name: velocity-config-volume
               mountPath: /server/velocity.toml
               subPath: velocity.toml
             - name: minecraft-proxy-volume
@@ -151,9 +151,9 @@ spec:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
             claimName: minecraft-proxy-pvc
-        - name: secret-volume
-          secret:
-            secretName: minecraft-proxy-secret
+        - name: velocity-config-volume
+          configMap:
+            name: velocity-config
         - name: lp-patches-volume
           configMap:
             name: lp-patches
