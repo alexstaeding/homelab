@@ -155,8 +155,8 @@ spec:
           configMap:
             name: velocity-config
         - name: proxy-secret-volume
-          configMap:
-            name: minecraft-proxy-secret
+          secret:
+            secretName: minecraft-proxy-secret
         - name: lp-patches-volume
           configMap:
             name: lp-patches
