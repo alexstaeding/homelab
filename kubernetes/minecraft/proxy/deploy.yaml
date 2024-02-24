@@ -17,26 +17,6 @@ spec:
       labels:
         app: minecraft-proxy
     spec:
-      initContainers:
-        - name: init-velocity
-          image: busybox
-          command:
-            - /bin/sh
-            - -c
-            - |
-              if [ ! -f /server/velocity.toml ]; then
-                wget -O /server/velocity.toml https://raw.githubusercontent.com/PaperMC/Velocity/dev/3.0.0/proxy/src/main/resources/default-velocity.toml
-              fi
-              echo $CFG_PROXY_SECRET > /server/forwarding.secret
-          env:
-            - name: CFG_PROXY_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: minecraft-proxy-secret
-                  key: secret-value
-          volumeMounts:
-            - name: minecraft-proxy-volume
-              mountPath: /server
       containers:
         - name: minecraft-proxy
           image: itzg/bungeecord:latest
