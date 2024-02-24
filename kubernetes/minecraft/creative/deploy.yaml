@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minecraft-creative
+  namespace: minecraft
+  labels:
+    app: minecraft-creative
+spec:
+  serviceName: "minecraft-creative-service-internal"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-creative
+  template:
+    metadata:
+      labels:
+        app: minecraft-creative
+    spec:
+      containers:
+        - name: minecraft-creative
+          image: itzg/minecraft-server:2024.2.2-java21
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+            - name: pv-patches-volume
+              mountPath: /config/patches/pv.json
+              subPath: pv.json
+            - name: lp-patches-volume
+              mountPath: /config/patches/lp.json
+              subPath: lp.json
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: CFG_PROXY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minecraft-proxy-secret
+                  key: secret-value
+            - name: CFG_VELOCITY_ENABLED
+              value: "true"
+            - name: TYPE
+              value: "PAPER"
+            - name: VERSION
+              value: "1.20.4"
+            - name: EULA
+              value: "true"
+            - name: USE_AIKAR_FLAGS
+              value: "true"
+            - name: ONLINE_MODE
+              value: "false"
+            - name: MOTD
+              value: "\u00A76Server-$(POD_NAME)"
+            - name: "INIT_MEMORY"
+              value: "2G"
+            - name: "MAX_MEMORY"
+              value: "8G"
+            - name: PLUGINS
+              value: |
+                https://download.luckperms.net/1532/bukkit/loader/LuckPerms-Bukkit-5.4.119.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/4.9.2/ViaVersion-4.9.2.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/4.9.1/ViaBackwards-4.9.1.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Paper-1.2.3.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.5.jar
+            - name: RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rcon-web-secret
+                  key: RCON_PASSWORD
+            - name: REPLACE_ENV_VARIABLE_PREFIX
+              value: ""
+            - name: PATCH_DEFINITIONS
+              value: "/config/patches"
+            - name: CFG_LP_CONFIG
+              value: "/data/plugins/LuckPerms/config.yml"
+            - name: CFG_LP_ADDRESS
+              value: "minecraft-postgres.minecraft"
+            - name: CFG_LP_DATABASE
+              value: "luckperms"
+            - name: CFG_LP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: CFG_LP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
+                  key: password
+      volumes:
+        - name: pv-patches-volume
+          configMap:
+            name: pv-patches
+        - name: lp-patches-volume
+          configMap:
+            name: lp-patches
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: "minecraft-storage"
+        resources:
+          requests:
+            storage: 32Gi
