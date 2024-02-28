@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: minecraft-proxy
-          image: itzg/bungeecord:latest
+          image: itzg/bungeecord:2024.2.0
           ports:
             - containerPort: 25577
           volumeMounts:
@@ -44,7 +44,7 @@ spec:
             - name: VELOCITY_VERSION
               value: "3.3.0-SNAPSHOT"
             - name: VELOCITY_BUILD_ID
-              value: "346"
+              value: "364"
             - name: PLUGINS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.5.0-rc1-beta/Ambassador-Velocity-1.5.0-rc1-all.jar
