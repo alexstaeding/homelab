@@ -1,0 +1,28 @@
+apiVersion: ceph.rook.io/v1
+kind: CephObjectStore
+metadata:
+  name: cluster-repository-image-os
+  namespace: rook-ceph
+spec:
+  metadataPool:
+    failureDomain: host
+    replicated:
+      size: 2
+  dataPool:
+    failureDomain: host
+    replicated:
+      size: 2
+  preservePoolsOnDelete: true
+  gateway:
+    port: 80
+    instances: 2
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: cluster-repository-image-storage
+provisioner: rook-ceph.ceph.rook.io/bucket
+reclaimPolicy: Delete
+parameters:
+  objectStorageName: cluster-repository-image-os
+  namespace: rook-ceph
