@@ -27,7 +27,7 @@ spec:
             - name: INSTALL_CSS
               value: "true"
             - name: WORKSHOP_COLLECTION_ID
-              value: "2061870598"
+              value: "3172569498"
             - name: SERVER_NAME
               value: "GeekHub TTT"
             - name: SERVER_PASSWORD
