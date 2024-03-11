@@ -13,6 +13,15 @@ spec:
       labels:
         app: server-1
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
       containers:
         - name: ttt-server
           image: images.sourcegrade.org/jusito/docker-ttt:2024.1
