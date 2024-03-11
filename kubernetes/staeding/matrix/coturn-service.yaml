@@ -253,7 +253,7 @@ spec:
       port: 49217
       targetPort: 49217
       protocol: UDP
-    - name: turn-4922
+    - name: turn-49218
       port: 49218
       targetPort: 49218
       protocol: UDP
@@ -331,7 +331,7 @@ spec:
       port: 49237
       targetPort: 49237
       protocol: UDP
-    - name: turn-4922
+    - name: turn-49238
       port: 49238
       targetPort: 49238
       protocol: UDP
