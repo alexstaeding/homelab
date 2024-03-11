@@ -12,6 +12,15 @@ spec:
       labels:
         app: cloudflared
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
       containers:
         - name: cloudflared
           image: cloudflare/cloudflared:2024.2.1

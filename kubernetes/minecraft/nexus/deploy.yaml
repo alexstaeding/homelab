@@ -14,6 +14,15 @@ spec:
       labels:
         app: nexus
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
       securityContext:
         fsGroup: 200  # Group ID for volume
       containers:

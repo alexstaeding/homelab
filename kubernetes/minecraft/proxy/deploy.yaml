@@ -17,6 +17,15 @@ spec:
       labels:
         app: minecraft-proxy
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
       containers:
         - name: minecraft-proxy
           image: itzg/bungeecord:2024.2.0
