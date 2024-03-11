@@ -97,7 +97,7 @@ spec:
       port: 49177
       targetPort: 49177
       protocol: UDP
-    - name: turn-4918
+    - name: turn-49178
       port: 49178
       targetPort: 49178
       protocol: UDP
@@ -175,7 +175,7 @@ spec:
       port: 49197
       targetPort: 49197
       protocol: UDP
-    - name: turn-4918
+    - name: turn-49198
       port: 49198
       targetPort: 49198
       protocol: UDP
