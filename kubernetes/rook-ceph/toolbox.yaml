@@ -5,8 +5,6 @@ metadata:
   namespace: rook-ceph # namespace:cluster
   labels:
     app: rook-ceph-tools
-  annotations:
-    argocd.argoproj.io/sync-wave: "2" # create after cluster
 spec:
   replicas: 1
   selector:
@@ -20,7 +18,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: rook-ceph-tools
-          image: quay.io/ceph/ceph:v18.2.1
+          image: quay.io/ceph/ceph:v18.2.2
           command:
             - /bin/bash
             - -c
