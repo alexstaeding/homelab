@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssh-reader
+  namespace: minecraft
+  labels:
+    app: ssh-reader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ssh-reader
+  template:
+    metadata:
+      labels:
+        app: ssh-reader
+    spec:
+      containers:
+        - name: openssh-server
+          image: quay.io/linuxserver/openssh-server
+          env:
+            - name: USER_NAME
+              value: "reader"
+            - name: PUBLIC_KEY
+              value: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH06pG/YfVI/arhYqWTDZfWa6usAv/wmTFvjIn+FByB+ "
+          volumeMounts:
+            - name: minecraft-proxy-volume
+              mountPath: /srv/servers/proxy
+            - name: data-volume-minecraft-lobby-0
+              mountPath: /srv/servers/lobby-0
+            - name: data-volume-minecraft-vanilla-0
+              mountPath: /srv/servers/vanilla-0
+            - name: data-volume-minecraft-vanilla-1
+              mountPath: /srv/servers/vanilla-1
+            - name: data-volume-minecraft-vanilla-2
+              mountPath: /srv/servers/vanilla-2
+            - name: data-volume-minecraft-atm9-0
+              mountPath: /srv/servers/atm9-0
+            - name: data-volume-minecraft-atm9-1
+              mountPath: /srv/servers/atm9-1
+            - name: data-volume-minecraft-e9e-0
+              mountPath: /srv/servers/e9e-0
+      volumes:
+        - name: minecraft-proxy-volume
+          persistentVolumeClaim:
+            claimName: minecraft-proxy-pvc
+        - name: data-volume-minecraft-lobby-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-lobby-0
+        - name: data-volume-minecraft-vanilla-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-vanilla-0
+        - name: data-volume-minecraft-vanilla-1
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-vanilla-1
+        - name: data-volume-minecraft-vanilla-2
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-vanilla-2
+        - name: data-volume-minecraft-atm9-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-atm9-0
+        - name: data-volume-minecraft-atm9-1
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-atm9-1
+        - name: data-volume-minecraft-e9e-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-e9e-0
