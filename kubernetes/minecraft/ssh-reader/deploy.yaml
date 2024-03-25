@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: openssh-server
-          image: quay.io/linuxserver/openssh-server
+          image: linuxserver/openssh-server:latest
           env:
             - name: USER_NAME
               value: "reader"
