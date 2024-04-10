@@ -10,7 +10,7 @@ data:
       "ops": [
         {
           "$set": {
-            "path": "$.moderForwarding.forwardingSecret",
+            "path": "$.modernForwarding.forwardingSecret",
             "value": "${CFG_PROXY_SECRET}"
           }
         }
