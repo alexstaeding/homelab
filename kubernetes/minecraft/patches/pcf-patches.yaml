@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pcf-patches # proxy-compatible-forge patches
+  namespace: minecraft
+data:
+  pcf.json: |
+    {
+      "file": "/data/config/pcf-common.toml",
+      "ops": [
+        {
+          "$set": {
+            "path": "$.moderForwarding.forwardingSecret",
+            "value": "${CFG_PROXY_SECRET}"
+          }
+        }
+      ]
+    }
