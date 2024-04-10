@@ -27,7 +27,7 @@ spec:
                       - worker
       containers:
         - name: minecraft-atm9
-          image: itzg/minecraft-server:2024.3.0-java21
+          image: itzg/minecraft-server:2024.4.0-java21
           ports:
             - containerPort: 25565
           volumeMounts:
