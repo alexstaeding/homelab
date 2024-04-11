@@ -67,6 +67,10 @@ spec:
               value: "2G"
             - name: "MAX_MEMORY"
               value: "8G"
+            - name: "VIEW_DISTANCE"
+              value: "32"
+            - name: "SIMULATION_DISTANCE"
+              value: "16"
             - name: PLUGINS
               value: |
                 https://download.luckperms.net/1534/bukkit/loader/LuckPerms-Bukkit-5.4.121.jar
