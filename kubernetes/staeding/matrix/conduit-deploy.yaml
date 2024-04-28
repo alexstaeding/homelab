@@ -19,7 +19,7 @@ spec:
         fsGroup: 200
       containers:
         - name: conduit
-          image: matrixconduit/matrix-conduit:10412d4be9de894b831b2f4cccc6f6b366d3fc15
+          image: matrixconduit/matrix-conduit:next-commit-24759951
           securityContext:
             runAsUser: 200
             runAsGroup: 200
