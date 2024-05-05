@@ -10,4 +10,7 @@ spec:
   pods:
     persistentVolume:
       size: '5Gi'
+    scheduling:
+      nodeSelector:
+        type: worker
   sgInstanceProfile: 'size-s'
