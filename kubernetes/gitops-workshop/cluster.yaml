@@ -2,7 +2,7 @@ apiVersion: stackgres.io/v1
 kind: SGCluster
 metadata:
   name: stackgres
-  namespace: bench-postgres
+  namespace: gitops-workshop
 spec:
   instances: 1
   postgres:
