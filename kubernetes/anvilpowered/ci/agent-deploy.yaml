@@ -5,7 +5,7 @@ metadata:
   namespace: anvilpowered-ci
 spec:
   serviceName: teamcity-agent
-  replicas: 3  # Number of agents
+  replicas: 4  # Number of agents
   selector:
     matchLabels:
       app: teamcity-agent
