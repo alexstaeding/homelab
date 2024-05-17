@@ -27,7 +27,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: teamcity-tex-agent
-          image: images.sourcegrade.org/tudalgo/teamcity-tex-agent:2023.11.2-1
+          image: images.sourcegrade.org/tudalgo/teamcity-tex-agent:2024.03.1-1
           volumeMounts:
             - name: ramdisk
               mountPath: /opt/buildagent/work
