@@ -27,7 +27,7 @@ spec:
                       - worker
       containers:
         - name: minecraft-creative
-          image: itzg/minecraft-server:2024.4.1-java21
+          image: itzg/minecraft-server:2024.6.0
           ports:
             - containerPort: 25565
           volumeMounts:
@@ -54,7 +54,7 @@ spec:
             - name: TYPE
               value: "PAPER"
             - name: VERSION
-              value: "1.20.4"
+              value: "1.20.6"
             - name: EULA
               value: "true"
             - name: USE_AIKAR_FLAGS
@@ -69,12 +69,13 @@ spec:
               value: "8G"
             - name: PLUGINS
               value: |
-                https://download.luckperms.net/1534/bukkit/loader/LuckPerms-Bukkit-5.4.121.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/4.9.3/ViaVersion-4.9.3.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/4.9.2/ViaBackwards-4.9.2.jar
+                https://download.luckperms.net/1544/bukkit/loader/LuckPerms-Bukkit-5.4.131.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/4.10.2/ViaVersion-4.10.2.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/4.10.2/ViaBackwards-4.10.2.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Paper-1.2.3.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.7.jar
                 https://cdn.modrinth.com/data/hXiIvTyT/versions/puUfqBpY/EssentialsX-2.20.1.jar
+                https://cdn.modrinth.com/data/z4HZZnLr/versions/IPOiEpsL/FastAsyncWorldEdit-Bukkit-2.10.0.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
