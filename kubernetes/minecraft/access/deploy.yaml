@@ -39,6 +39,8 @@ spec:
               mountPath: /srv/servers/vanilla-2
             - name: data-volume-minecraft-amplified-0
               mountPath: /srv/servers/amplified-0
+            - name: data-volume-minecraft-creative-0
+              mountPath: /srv/servers/creative-0
             - name: data-volume-minecraft-atm9-0
               mountPath: /srv/servers/atm9-0
             - name: data-volume-minecraft-atm9-1
@@ -67,6 +69,9 @@ spec:
         - name: data-volume-minecraft-amplified-0
           persistentVolumeClaim:
             claimName: data-volume-minecraft-amplified-0
+        - name: data-volume-minecraft-creative-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-creative-0
         - name: data-volume-minecraft-atm9-0
           persistentVolumeClaim:
             claimName: data-volume-minecraft-atm9-0
