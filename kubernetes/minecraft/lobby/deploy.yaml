@@ -73,7 +73,7 @@ spec:
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/4.10.2/ViaVersion-4.10.2.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/4.10.2/ViaBackwards-4.10.2.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Paper-1.2.3.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.7.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.12.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
