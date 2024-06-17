@@ -56,10 +56,10 @@ spec:
               value: "398"
             - name: PLUGINS
               value: |
+                https://download.luckperms.net/1549/bukkit/loader/LuckPerms-Bukkit-5.4.134.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.5.2-beta/Ambassador-Velocity-1.5.2-beta-all.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Proxy-1.2.3.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/anvilpowered/catalyst/catalyst-0.4.0-RC35.jar
-                https://download.luckperms.net/1544/velocity/LuckPerms-Velocity-5.4.131.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
