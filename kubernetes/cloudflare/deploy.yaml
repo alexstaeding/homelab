@@ -23,7 +23,7 @@ spec:
                       - worker
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:2024.6.0
+          image: cloudflare/cloudflared:2024.6.1
           imagePullPolicy: Always
           args: [ "tunnel", "--no-autoupdate", "run", "--token=$(TOKEN)" ]
           env:
