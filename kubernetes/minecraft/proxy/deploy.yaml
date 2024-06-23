@@ -28,7 +28,7 @@ spec:
                       - worker
       containers:
         - name: minecraft-proxy
-          image: itzg/bungeecord:2024.2.0
+          image: itzg/mc-proxy:2024.6.0
           ports:
             - containerPort: 25577
           volumeMounts:
