@@ -73,7 +73,7 @@ spec:
               value: "16"
             - name: PLUGINS
               value: |
-                https://download.luckperms.net/1549/bukkit/loader/LuckPerms-Bukkit-5.4.134.jar
+                https://download.luckperms.net/1552/bukkit/loader/LuckPerms-Bukkit-5.4.137.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Paper-1.2.3.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.12.jar
             - name: RCON_PASSWORD
