@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: openssh-server
-          image: linuxserver/openssh-server:latest
+          image: linuxserver/openssh-server:9.7_p1-r4-ls164
           env:
             - name: USER_NAME
               value: "reader"
