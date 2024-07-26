@@ -22,7 +22,9 @@ spec:
             - name: USER_NAME
               value: "reader"
             - name: PUBLIC_KEY
-              value: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH06pG/YfVI/arhYqWTDZfWa6usAv/wmTFvjIn+FByB+ "
+              value: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH06pG/YfVI/arhYqWTDZfWa6usAv/wmTFvjIn+FByB+"
+            - name: SUDO_ACCESS
+              value: "true"
           volumeMounts:
             - name: minecraft-proxy-volume
               mountPath: /srv/servers/proxy
