@@ -69,9 +69,9 @@ spec:
               value: "8G"
             - name: PLUGINS
               value: |
-                https://download.luckperms.net/1552/bukkit/loader/LuckPerms-Bukkit-5.4.137.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.3/SignedVelocity-Paper-1.2.3.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.12.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1556/bukkit/loader/LuckPerms-Bukkit-5.4.141.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.4/SignedVelocity-Paper-1.2.4.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.15.jar
                 https://cdn.modrinth.com/data/hXiIvTyT/versions/puUfqBpY/EssentialsX-2.20.1.jar
                 https://cdn.modrinth.com/data/z4HZZnLr/versions/IPOiEpsL/FastAsyncWorldEdit-Bukkit-2.10.0.jar
             - name: RCON_PASSWORD
