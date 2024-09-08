@@ -72,8 +72,8 @@ spec:
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1556/bukkit/loader/LuckPerms-Bukkit-5.4.141.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.4/SignedVelocity-Paper-1.2.4.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/griefdefender/griefdefender-bukkit-2.5.15.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/4.10.2/ViaVersion-4.10.2.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/4.10.2/ViaBackwards-4.10.2.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaVersion/releases/download/5.0.3/ViaVersion-5.0.3.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/ViaVersion/ViaBackwards/releases/download/5.0.3/ViaBackwards-5.0.3.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
