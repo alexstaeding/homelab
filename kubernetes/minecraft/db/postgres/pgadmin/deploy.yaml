@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pgadmin
-          image: dpage/pgadmin4:8.5
+          image: dpage/pgadmin4:8.14
           ports:
             - containerPort: 80
           env:
