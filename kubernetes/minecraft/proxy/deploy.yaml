@@ -51,14 +51,15 @@ spec:
             - name: TYPE
               value: "VELOCITY"
             - name: VELOCITY_VERSION
-              value: "3.3.0-SNAPSHOT"
+              value: "3.4.0-SNAPSHOT"
             - name: VELOCITY_BUILD_ID
-              value: "398"
+              value: "458"
             - name: PLUGINS
+# re-add for modded support later
+#                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.5.2-beta/Ambassador-Velocity-1.5.2-beta-all.jar
               value: |
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1556/velocity/LuckPerms-Velocity-5.4.141.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.2.4/SignedVelocity-Proxy-1.2.4.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.5.2-beta/Ambassador-Velocity-1.5.2-beta-all.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1568/velocity/LuckPerms-Velocity-5.4.151.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.3.0/SignedVelocity-Proxy-1.3.0.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/anvilpowered/catalyst/catalyst-0.4.0-RC35.jar
             - name: RCON_PASSWORD
               valueFrom:
