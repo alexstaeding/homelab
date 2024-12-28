@@ -34,10 +34,10 @@ spec:
             - name: data-volume
               mountPath: /data
             - name: pv-patches-volume
-              mountPath: /config/patches/pv.json
+              mountPath: /config/config/patches/pv.json
               subPath: pv.json
             - name: lp-patches-volume
-              mountPath: /config/patches/lp.json
+              mountPath: /config/config/patches/lp.json
               subPath: lp.json
             - name: vanilla-bukkit-yml-volume
               mountPath: /config/bukkit.yml
@@ -91,8 +91,12 @@ spec:
                   key: RCON_PASSWORD
             - name: REPLACE_ENV_VARIABLE_PREFIX
               value: ""
+            - name: "COPY_CONFIG_DEST"
+              value: "/data"
             - name: PATCH_DEFINITIONS
               value: "/config/patches"
+            - name: "ENABLE_WHITELIST"
+              value: "false"
             - name: CFG_LP_CONFIG
               value: "/data/plugins/LuckPerms/config.yml"
             - name: CFG_LP_ADDRESS
