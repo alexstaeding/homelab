@@ -60,7 +60,7 @@ spec:
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1568/velocity/LuckPerms-Velocity-5.4.151.jar
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/4drian3d/SignedVelocity/releases/download/1.3.0/SignedVelocity-Proxy-1.3.0.jar
-                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/anvilpowered/catalyst/catalyst-0.4.0-RC35.jar
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/mc-bin/anvilpowered/catalyst/catalyst-0.4.0-BETA55-master-26c5be2.jar
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
