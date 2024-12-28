@@ -75,6 +75,8 @@ spec:
               value: "32"
             - name: "SIMULATION_DISTANCE"
               value: "16"
+            - name: "ALLOW_END"
+              value: "false"
             - name: PLUGINS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1568/bukkit/loader/LuckPerms-Bukkit-5.4.151.jar
