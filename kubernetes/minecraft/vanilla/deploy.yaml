@@ -34,10 +34,10 @@ spec:
             - name: data-volume
               mountPath: /data
             - name: pv-patches-volume
-              mountPath: /config/config/patches/pv.json
+              mountPath: /config/patches/pv.json
               subPath: pv.json
             - name: lp-patches-volume
-              mountPath: /config/config/patches/lp.json
+              mountPath: /config/patches/lp.json
               subPath: lp.json
             - name: vanilla-bukkit-yml-volume
               mountPath: /config/bukkit.yml
