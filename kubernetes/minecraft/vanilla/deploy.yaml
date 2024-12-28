@@ -39,6 +39,9 @@ spec:
             - name: lp-patches-volume
               mountPath: /config/patches/lp.json
               subPath: lp.json
+            - name: vanilla-bukkit-yml-volume
+              mountPath: /config/bukkit.yml
+              subPath: bukkit.yml
           env:
             - name: POD_NAME
               valueFrom:
@@ -75,8 +78,6 @@ spec:
               value: "32"
             - name: "SIMULATION_DISTANCE"
               value: "16"
-            - name: "ALLOW_END"
-              value: "false"
             - name: PLUGINS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1568/bukkit/loader/LuckPerms-Bukkit-5.4.151.jar
@@ -114,6 +115,9 @@ spec:
         - name: lp-patches-volume
           configMap:
             name: lp-patches
+        - name: vanilla-bukkit-yml-volume
+          configMap:
+            name: vanilla-bukkit-yml
   volumeClaimTemplates:
     - metadata:
         name: data-volume
