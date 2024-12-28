@@ -1,9 +1,11 @@
 {
   "kubernetes": {
-    "fileMatch": ["kubernetes/.+\\.yaml$"]
+    "fileMatch": [
+      "kubernetes/.+\\.yaml$"
+    ]
   },
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
   "addLabels": [
     "dependency"
