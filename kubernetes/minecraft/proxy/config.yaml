@@ -82,20 +82,15 @@ data:
     vanilla-0 = "minecraft-vanilla-0.minecraft-vanilla-service-internal.minecraft.svc.cluster.local"
     vanilla-1 = "minecraft-vanilla-1.minecraft-vanilla-service-internal.minecraft.svc.cluster.local"
     vanilla-2 = "minecraft-vanilla-2.minecraft-vanilla-service-internal.minecraft.svc.cluster.local"
-    amplified-0 = "minecraft-amplified-0.minecraft-amplified-service-internal.minecraft.svc.cluster.local"
     creative-0 = "minecraft-creative-0.minecraft-creative-service-internal.minecraft.svc.cluster.local"
     atm9-0 = "minecraft-atm9-0.minecraft-atm9-service-internal.minecraft.svc.cluster.local"
-    atm9-1 = "minecraft-atm9-1.minecraft-atm9-service-internal.minecraft.svc.cluster.local"
-    e9e-0 = "minecraft-e9e-0.minecraft-e9e-service-internal.minecraft.svc.cluster.local"
 
     #factions = "127.0.0.1:30067"
     #minigames = "127.0.0.1:30068"
 
     # In what order we should try servers when a player logs in or is kicked from a server.
     try = [
-      "lobby",
-      "vanilla-0",
-      "vanilla-1"
+      "lobby"
     ]
 
     [forced-hosts]
@@ -104,28 +99,8 @@ data:
     #    "minigames"
     #]
 
-    "vanilla-0.sourcegrade.org" = [
-      "vanilla-0"
-    ]
-
-    "vanilla-1.sourcegrade.org" = [
-      "vanilla-1"
-    ]
-
-    "amplified-0.sourcegrade.org" = [
-      "amplified-0"
-    ]
-
     "atm9-0.sourcegrade.org" = [
       "atm9-0"
-    ]
-
-    "atm9-1.sourcegrade.org" = [
-      "atm9-1"
-    ]
-
-    "e9e-0.sourcegrade.org" = [
-      "e9e-0"
     ]
 
     [advanced]
