@@ -70,6 +70,8 @@ spec:
               value: "false"
             - name: MOTD
               value: "\u00A76Server-$(POD_NAME)"
+            - name: DIFFICULTY
+              value: "hard"
             - name: "INIT_MEMORY"
               value: "2G"
             - name: "MAX_MEMORY"
