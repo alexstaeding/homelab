@@ -37,6 +37,12 @@ data:
             "path": "$.data.password",
             "value": "${CFG_LP_PASSWORD}"
           }
+        },
+        {
+          "$set": {
+            "path": "$.server",
+            "value": "${POD_NAME}"
+          }
         }
       ]
     }
