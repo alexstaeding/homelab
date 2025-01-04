@@ -27,7 +27,7 @@ spec:
                       - worker
       containers:
         - name: minecraft-creative
-          image: itzg/minecraft-server:2024.12.1
+          image: itzg/minecraft-server:2025.1.0
           ports:
             - containerPort: 25565
           volumeMounts:
