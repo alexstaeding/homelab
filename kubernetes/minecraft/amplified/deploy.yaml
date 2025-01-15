@@ -56,9 +56,9 @@ spec:
             - name: VERSION
               value: "1.21.4"
             - name: PAPER_CHANNEL
-              value: "experimental"
+              value: "default"
             - name: PAPER_BUILD
-              value: "59"
+              value: "114"
             - name: EULA
               value: "true"
             - name: USE_AIKAR_FLAGS
