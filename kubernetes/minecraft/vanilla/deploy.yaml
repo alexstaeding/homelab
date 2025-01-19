@@ -39,6 +39,9 @@ spec:
             - name: lp-patches-volume
               mountPath: /patches/lp.json
               subPath: lp.json
+            - name: bedrock-breaking-patches-volume
+              mountPath: /patches/bedrock-breaking.aml
+              subPath: bedrock-breaking.json
             - name: vanilla-bukkit-yml-volume
               mountPath: /config/bukkit.yml
               subPath: bukkit.yml
@@ -122,6 +125,9 @@ spec:
         - name: lp-patches-volume
           configMap:
             name: lp-patches
+        - name: bedrock-breaking-patches-volume
+          configMap:
+            name: bedrock-breaking-patches
         - name: vanilla-bukkit-yml-volume
           configMap:
             name: vanilla-bukkit-yml

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bedrock-breaking-patches
+  namespace: minecraft
+data:
+  bedrock-breaking.json: |
+    {
+      "file": "/data/config/paper-global.yml",
+      "ops": [
+        {
+          "$set": {
+            "path": "$.unsupported-settings.allow-permanent-block-break-exploits",
+            "value": "true",
+            "value-type": "bool"
+          }
+        }
+      ]
+    }
