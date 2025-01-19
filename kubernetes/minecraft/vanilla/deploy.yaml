@@ -64,7 +64,7 @@ spec:
             - name: PAPER_CHANNEL
               value: "default"
             - name: PAPER_BUILD
-              value: "114"
+              value: "118"
             - name: EULA
               value: "true"
             - name: USE_AIKAR_FLAGS
