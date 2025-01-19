@@ -40,7 +40,7 @@ spec:
               mountPath: /patches/lp.json
               subPath: lp.json
             - name: bedrock-breaking-patches-volume
-              mountPath: /patches/bedrock-breaking.aml
+              mountPath: /patches/bedrock-breaking.json
               subPath: bedrock-breaking.json
             - name: vanilla-bukkit-yml-volume
               mountPath: /config/bukkit.yml
