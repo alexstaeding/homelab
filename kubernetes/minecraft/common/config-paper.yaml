@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: common-config-paper
+  namespace: minecraft
+data:
+  TYPE: "PAPER"
+  VERSION: "1.21.4"
+  PAPER_CHANNEL: "default"
+  PAPER_BUILD: "118"
+  EULA: "true"
+  USE_AIKAR_FLAGS: "true"
+  MOTD: "\u00A76Server-$(POD_NAME)"
+  DIFFICULTY: "hard"
+  VIEW_DISTANCE: "32"
+  SIMULATION_DISTANCE: "16"
+
+  INIT_MEMORY: "2G"
+  MAX_MEMORY: "8G"
+
+  CFG_VELOCITY_ENABLED: "true"
+  ONLINE_MODE: "false"
+
+  REPLACE_ENV_VARIABLE_PREFIX: ""
+  COPY_CONFIG_DEST: "/data"
+  PATCH_DEFINITIONS: "/patches"
+  CFG_LP_CONFIG: "/data/plugins/LuckPerms/config.yml"
+  CFG_LP_ADDRESS: "minecraft-postgres.minecraft"
+  CFG_LP_DATABASE: "luckperms"

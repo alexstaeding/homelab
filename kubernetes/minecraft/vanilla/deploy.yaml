@@ -55,34 +55,6 @@ spec:
                 secretKeyRef:
                   name: minecraft-proxy-secret
                   key: secret-value
-            - name: CFG_VELOCITY_ENABLED
-              value: "true"
-            - name: TYPE
-              value: "PAPER"
-            - name: VERSION
-              value: "1.21.4"
-            - name: PAPER_CHANNEL
-              value: "default"
-            - name: PAPER_BUILD
-              value: "118"
-            - name: EULA
-              value: "true"
-            - name: USE_AIKAR_FLAGS
-              value: "true"
-            - name: ONLINE_MODE
-              value: "false"
-            - name: MOTD
-              value: "\u00A76Server-$(POD_NAME)"
-            - name: DIFFICULTY
-              value: "hard"
-            - name: "INIT_MEMORY"
-              value: "2G"
-            - name: "MAX_MEMORY"
-              value: "8G"
-            - name: "VIEW_DISTANCE"
-              value: "32"
-            - name: "SIMULATION_DISTANCE"
-              value: "16"
             - name: PLUGINS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/luckperms-proxy/1568/bukkit/loader/LuckPerms-Bukkit-5.4.151.jar
@@ -94,20 +66,6 @@ spec:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
-            - name: REPLACE_ENV_VARIABLE_PREFIX
-              value: ""
-            - name: "COPY_CONFIG_DEST"
-              value: "/data"
-            - name: PATCH_DEFINITIONS
-              value: "/patches"
-            - name: "ENABLE_WHITELIST"
-              value: "false"
-            - name: CFG_LP_CONFIG
-              value: "/data/plugins/LuckPerms/config.yml"
-            - name: CFG_LP_ADDRESS
-              value: "minecraft-postgres.minecraft"
-            - name: CFG_LP_DATABASE
-              value: "luckperms"
             - name: CFG_LP_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -118,6 +76,9 @@ spec:
                 secretKeyRef:
                   name: luckperms.minecraft-postgres.credentials.postgresql.acid.zalan.do
                   key: password
+          envFrom:
+            - configMapRef:
+                name: common-config-paper
       volumes:
         - name: pv-patches-volume
           configMap:
