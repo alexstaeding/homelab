@@ -50,6 +50,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: MOTD
+              value: "\u-01A76Server-$(POD_NAME)"
             - name: CFG_PROXY_SECRET
               valueFrom:
                 secretKeyRef:
