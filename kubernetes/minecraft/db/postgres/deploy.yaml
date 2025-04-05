@@ -20,7 +20,7 @@ spec:
     griefdefender: griefdefender
     luckperms: luckperms
   postgresql:
-    version: "15"
+    version: "17"
     parameters:
       max_connections: "1024"
       password_encryption: scram-sha-256
