@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: postgres-operator
+  namespace: postgres-operator
 data:
   # additional_owner_roles: "cron_admin"
   # additional_pod_capabilities: "SYS_NICE"
