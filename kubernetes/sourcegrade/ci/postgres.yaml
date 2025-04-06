@@ -14,6 +14,6 @@ spec:
   databases:
     teamcity: teamcity
   postgresql:
-    version: "15"
+    version: "17"
     parameters:
       password_encryption: scram-sha-256
