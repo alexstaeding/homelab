@@ -27,7 +27,7 @@ spec:
                       - worker
       containers:
         - name: minecraft-amplified
-          image: itzg/minecraft-server:2025.4.0
+          image: itzg/minecraft-server:2025.4.2
           ports:
             - containerPort: 25565
           volumeMounts:

@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: minecraft-e9e
-          image: itzg/minecraft-server:2025.4.0
+          image: itzg/minecraft-server:2025.4.2
           ports:
             - containerPort: 25565
           volumeMounts:
