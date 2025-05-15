@@ -85,6 +85,7 @@ data:
     creative-0 = "minecraft-creative-0.minecraft-creative-service-internal.minecraft.svc.cluster.local"
     atm9-0 = "minecraft-atm9-0.minecraft-atm9-service-internal.minecraft.svc.cluster.local"
     atm10-0 = "minecraft-atm10-0.minecraft-atm10-service-internal.minecraft.svc.cluster.local"
+    monifactory-0 = "minecraft-monifactory-0.minecraft-monifactory-service-internal.minecraft.svc.cluster.local"
 
     #factions = "127.0.0.1:30067"
     #minigames = "127.0.0.1:30068"
@@ -106,6 +107,10 @@ data:
 
     "atm10-0.sourcegrade.org" = [
       "atm10-0"
+    ]
+
+    "monifactory.sourcegrade.org" = [
+      "monifactory-0"
     ]
 
     [advanced]

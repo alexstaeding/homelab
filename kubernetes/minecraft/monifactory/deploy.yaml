@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minecraft-monifactory
+  namespace: minecraft
+  labels:
+    app: minecraft-monifactory
+spec:
+  serviceName: "minecraft-monifactory-service-internal"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-monifactory
+  template:
+    metadata:
+      labels:
+        app: minecraft-monifactory
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - worker
+      containers:
+        - name: minecraft-monifactory
+          image: itzg/minecraft-server:2025.4.2
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+            - name: pcf-patches-volume
+              mountPath: "/config/patches/pcf.json"
+              subPath: "pcf.json"
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: CFG_PROXY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: minecraft-proxy-secret
+                  key: secret-value
+            - name: CFG_VELOCITY_ENABLED
+              value: "true"
+            - name: REPLACE_ENV_VARIABLE_PREFIX
+              value: "CFG_"
+            - name: TYPE
+              value: "AUTO_CURSEFORGE"
+            - name: CF_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: curseforge-secret
+                  key: api-key
+            - name: CF_SLUG
+              value: "monifactory"
+            - name: CF_FILENAME_MATCHER
+              value: "0.12.6"
+            - name: EULA
+              value: "true"
+            - name: USE_AIKAR_FLAGS
+              value: "true"
+            - name: ONLINE_MODE
+              value: "false"
+            - name: MOTD
+              value: "\u00A76Server-$(POD_NAME)"
+            - name: "INIT_MEMORY"
+              value: "24G"
+            - name: "MAX_MEMORY"
+              value: "32G"
+            - name: JVM_OPTS
+              value: "-Dfml.readTimeout=120"
+            - name: MODS
+              value: |
+                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Proxy-Compatible-Forge/releases/download/1.1.7/proxy-compatible-forge-1.1.7.jar
+            - name: RCON_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rcon-web-secret
+                  key: RCON_PASSWORD
+            - name: PATCH_DEFINITIONS
+              value: "/config/patches"
+      volumes:
+        - name: pcf-patches-volume
+          configMap:
+            name: pcf-patches
+  volumeClaimTemplates:
+    - metadata:
+        name: data-volume
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: "minecraft-storage"
+        resources:
+          requests:
+            storage: 32Gi
