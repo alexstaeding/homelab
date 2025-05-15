@@ -82,12 +82,6 @@ spec:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
-            - name: PATCH_DEFINITIONS
-              value: "/config/patches"
-      volumes:
-        - name: pcf-patches-volume
-          configMap:
-            name: pcf-patches
   volumeClaimTemplates:
     - metadata:
         name: data-volume
