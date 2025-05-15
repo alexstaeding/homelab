@@ -53,7 +53,7 @@ spec:
             - name: VELOCITY_VERSION
               value: "3.4.0-SNAPSHOT"
             - name: VELOCITY_BUILD_ID
-              value: "460"
+              value: "503"
             - name: PLUGINS
 # re-add for modded support later
 #                http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.5.2-beta/Ambassador-Velocity-1.5.2-beta-all.jar
