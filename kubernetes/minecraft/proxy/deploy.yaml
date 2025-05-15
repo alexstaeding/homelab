@@ -55,7 +55,7 @@ spec:
             - name: VELOCITY_BUILD_ID
               value: "503"
             - name: JVM_OPTS
-              value: "-Dfml.readTimeout=120 -Dvelocity.packet-decode-logging=true"
+              value: "-Dfml.readTimeout=120 -Dvelocity.packet-decode-logging=true -Dvelocity.max-known-packs=256"
             - name: PLUGINS
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Ambassador/releases/download/v1.5.2-beta/Ambassador-Velocity-1.5.2-beta-all.jar
