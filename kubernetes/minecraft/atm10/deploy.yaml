@@ -33,6 +33,9 @@ spec:
           volumeMounts:
             - name: data-volume
               mountPath: /data
+            - name: nf-patches-volume
+              mountPath: "/config/patches/nf.json"
+              subPath: "nf.json"
           env:
             - name: POD_NAME
               valueFrom:
@@ -82,6 +85,12 @@ spec:
                 secretKeyRef:
                   name: rcon-web-secret
                   key: RCON_PASSWORD
+            - name: PATCH_DEFINITIONS
+              value: "/config/patches"
+      volumes:
+        - name: nf-patches-volume
+          configMap:
+            name: nf-patches
   volumeClaimTemplates:
     - metadata:
         name: data-volume
