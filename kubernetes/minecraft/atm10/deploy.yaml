@@ -79,8 +79,7 @@ spec:
               value: |
                 http://nexus-0.nexus.minecraft.svc.cluster.local:8081/repository/github-proxy/adde0109/Proxy-Compatible-Forge/releases/download/1.1.7/proxy-compatible-forge-1.1.7.jar
             - name: CF_EXCLUDE_MODS
-              value: |
-                smithing-template-viewer
+              value: "1133580" # smithing-template-viewer
             - name: RCON_PASSWORD
               valueFrom:
                 secretKeyRef:
