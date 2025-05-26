@@ -1,4 +1,4 @@
-#!/bin/bash
+#!bash
 
 # Function to get the latest version tag from Rook GitHub repo
 get_latest_version() {

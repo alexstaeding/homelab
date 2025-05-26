@@ -1,4 +1,4 @@
-#!/bin/bash
+#!bash
 
 get_latest_version() {
   wget -qO- https://api.github.com/repos/ceph/ceph/git/refs/tags | \
