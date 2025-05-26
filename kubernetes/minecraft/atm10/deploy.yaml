@@ -60,7 +60,7 @@ spec:
             - name: CF_SLUG
               value: "all-the-mods-10"
             - name: CF_FILENAME_MATCHER
-              value: "2.47"
+              value: "3.0"
             - name: EULA
               value: "true"
             - name: USE_AIKAR_FLAGS
