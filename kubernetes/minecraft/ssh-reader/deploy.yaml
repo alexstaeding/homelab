@@ -46,6 +46,8 @@ spec:
               mountPath: /srv/servers/atm9-1
             - name: data-volume-minecraft-e9e-0
               mountPath: /srv/servers/e9e-0
+            - name: data-volume-minecraft-monifactory-0
+              mountPath: /srv/servers/monifactory-0
       volumes:
         - name: minecraft-proxy-volume
           persistentVolumeClaim:
@@ -77,3 +79,6 @@ spec:
         - name: data-volume-minecraft-e9e-0
           persistentVolumeClaim:
             claimName: data-volume-minecraft-e9e-0
+        - name: data-volume-minecraft-monifactory-0
+          persistentVolumeClaim:
+            claimName: data-volume-minecraft-monifactory-0
