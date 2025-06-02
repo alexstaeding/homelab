@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: coturn
-          image: coturn/coturn:4.6.2
+          image: coturn/coturn:4.7.0
           args: [
             "--use-auth-secret",
             "--realm=matrix.staeding.com",
