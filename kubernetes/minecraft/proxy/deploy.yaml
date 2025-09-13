@@ -28,7 +28,7 @@ spec:
                       - worker
       containers:
         - name: minecraft-proxy
-          image: itzg/mc-proxy:2025.4.0
+          image: itzg/mc-proxy:2025.9.1
           ports:
             - containerPort: 25577
           volumeMounts:
